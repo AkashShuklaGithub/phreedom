@@ -37,29 +37,27 @@ class MnoSsoUser extends MnoSsoBaseUser
    *
    * @return boolean whether the user was successfully set in session or not
    */
-  // protected function setInSession()
-  // {
-  //   // First set $conn variable (need global variable?)
-  //   $conn = $this->connection;
-  //   
-  //   $sel1 = $conn->query("SELECT ID,name,lastlogin FROM user WHERE ID = $this->local_id");
-  //   $chk = $sel1->fetch();
-  //   if ($chk["ID"] != "") {
-  //       $now = time();
-  //       
-  //       // Set session
-  //       $this->session['userid'] = $chk['ID'];
-  //       $this->session['username'] = stripslashes($chk['name']);
-  //       $this->session['lastlogin'] = $now;
-  //       
-  //       // Update last login timestamp
-  //       $upd1 = $conn->query("UPDATE user SET lastlogin = '$now' WHERE ID = $this->local_id");
-  //       
-  //       return true;
-  //   } else {
-  //       return false;
-  //   }
-  // }
+  protected function setInSession()
+  {
+    // First get the full user object
+    $sql = "select admin_id, admin_name, inactive, display_name, admin_email, admin_pass, account_id, admin_prefs, admin_security from users WHERE admin_id = {$this->connection->prepare_input($this->local_id)}";
+    $result = $this->connection->Execute($sql);
+    
+    if ($result) {
+      $_SESSION['admin_id']       = $result->fields['admin_id'];
+      $_SESSION['display_name']   = $result->fields['display_name'];
+      $_SESSION['admin_email']    = $result->fields['admin_email'];
+	    $_SESSION['admin_prefs']    = unserialize($result->fields['admin_prefs']);
+	    $_SESSION['company']        = 'phreedom';
+      $_SESSION['language']       = null;
+	    $_SESSION['account_id']     = $result->fields['account_id'];
+      $_SESSION['admin_security'] = gen_parse_permissions($result->fields['admin_security']);
+        
+      return true;
+    } else {
+      return false;
+    }
+  }
   
   
   /**
@@ -69,52 +67,106 @@ class MnoSsoUser extends MnoSsoBaseUser
    *
    * @return the ID of the user created, null otherwise
    */
-  // protected function createLocalUser()
-  // {
-  //   $lid = null;
-  //   
-  //   if ($this->accessScope() == 'private') {
-  //     // First set $conn variable (need global variable?)
-  //     $conn = $this->connection;
-  //     
-  //     // Create user
-  //     $lid = $this->connection->query("CREATE BLA.....");
-  //   }
-  //   
-  //   return $lid;
-  // }
+  protected function createLocalUser()
+  {
+    $lid = null;
+    
+    if ($this->accessScope() == 'private') {
+      // First set $conn variable (need global variable?)
+      $user = $this->buildLocalUser();
+      
+      // Create user
+      db_perform('users', $user);
+      $lid = db_insert_id();
+    }
+    
+    return $lid;
+  }
+  
+  /**
+   * Build a local user for creation
+   *
+   * @return a hash containing user attributes
+   */
+  protected function buildLocalUser()
+  {
+  	$user_data = array(
+  	  'admin_name'     => db_prepare_input($this->uid),
+  	  'is_role'        => '0',
+  	  'inactive'       => '0',
+  	  'display_name'   => db_prepare_input("$this->name $this->surname"),
+  	  'admin_email'    => db_prepare_input($this->email),
+  	  'account_id'     => 0,
+  	  //'admin_prefs'    => null,
+  	  'admin_security' => $this->getSecurityPermissions(),
+      'admin_pass'     => pw_encrypt_password($this->generatePassword())
+  	);
+    
+    return $user_data;
+  }
+  
+  /**
+   * Return the list of permissions for the user.
+   * Two sets are currently defined: base user and admin 
+   *
+   * @return a hash containing user attributes
+   */
+  protected function getSecurityPermissions()
+  {
+    $admin_default_sec = "26:4,26:4,49:4,51:4,51:4,76:4,76:4,15:4,15:4,16:4,151:4,151:4,152:4,153:4,156:4,88:4,89:4,102:4,111:4,103:4,101:4,112:4,105:4,104:4,107:4,108:4,29:4,35:4,28:4,32:4,30:4,34:4,31:4,40:4,54:4,59:4,53:4,58:4,55:4,61:4,57:4,60:4,126:4,130:4,4:4,129:4,19:4,6:4,7:4,11:4,20:4,2:4,18:4,1:4,5:4,3:4,3:4,3:4,3:4,3:4,3:4,3:4,13:4";
+    
+    $user_default_sec = "26:0,49:0,16:0,88:0,29:0,35:0,28:0,32:0,30:0,34:0,31:0,40:0,51:0,89:0,54:0,59:0,53:0,58:0,55:0,61:0,57:0,60:0,151:0,152:0,153:0,102:0,111:0,103:0,101:0,112:0,105:0,104:0,107:0,108:0,126:0,130:0,4:0,129:0,19:0,76:0,2:0,18:0,3:0,13:0,6:0,7:0,11:0,1:0,5:0";
+      
+    $security = $user_default_sec; // User
+  
+    if ($this->app_owner) {
+      $security = $admin_default_sec; // Admin
+    } else {
+      foreach ($this->organizations as $organization) {
+        if ($organization['role'] == 'Admin' || $organization['role'] == 'Super Admin') {
+          $security = $admin_default_sec;
+        } else {
+          $security = $user_default_sec;
+        }
+      }
+    }
+    
+    return $security;
+  }
   
   /**
    * Get the ID of a local user via Maestrano UID lookup
    *
    * @return a user ID if found, null otherwise
    */
-  // protected function getLocalIdByUid()
-  // {
-  //   $result = $this->connection->query("SELECT ID FROM user WHERE mno_uid = {$this->connection->quote($this->uid)} LIMIT 1")->fetch();
-  //   
-  //   if ($result && $result['ID']) {
-  //     return $result['ID'];
-  //   }
-  //   
-  //   return null;
-  // }
+  protected function getLocalIdByUid()
+  {
+    $result = $this->connection->Execute_return_error("SELECT admin_id FROM users WHERE mno_uid = '{$this->connection->prepare_input($this->uid)}' LIMIT 1");
+    $result = $result->fields;
+    
+    if ($result && $result['admin_id']) {
+      return $result['admin_id'];
+    }
+    
+    return null;
+  }
   
   /**
    * Get the ID of a local user via email lookup
    *
    * @return a user ID if found, null otherwise
    */
-  // protected function getLocalIdByEmail()
-  // {
-  //   $result = $this->connection->query("SELECT ID FROM user WHERE email = {$this->connection->quote($this->email)} LIMIT 1")->fetch();
-  //   
-  //   if ($result && $result['ID']) {
-  //     return $result['ID'];
-  //   }
-  //   
-  //   return null;
-  // }
+  protected function getLocalIdByEmail()
+  {
+    $result = $this->connection->Execute_return_error("SELECT admin_id FROM users WHERE admin_email = '{$this->connection->prepare_input($this->email)}' LIMIT 1");
+    $result = $result->fields;
+    
+    if ($result && $result['admin_id']) {
+      return $result['admin_id'];
+    }
+    
+    return null;
+  }
   
   /**
    * Set all 'soft' details on the user (like name, surname, email)
@@ -122,28 +174,37 @@ class MnoSsoUser extends MnoSsoBaseUser
    *
    * @return boolean whether the user was synced or not
    */
-   // protected function syncLocalDetails()
-   // {
-   //   if($this->local_id) {
-   //     $upd = $this->connection->query("UPDATE user SET name = {$this->connection->quote($this->name . ' ' . $this->surname)}, email = {$this->connection->quote($this->email)} WHERE ID = $this->local_id");
-   //     return $upd;
-   //   }
-   //   
-   //   return false;
-   // }
+   protected function syncLocalDetails()
+   {
+     if($this->local_id) {
+       
+       $upd = $this->connection->Execute_return_error("UPDATE users 
+         SET admin_name = '{$this->connection->prepare_input($this->uid)}',
+         admin_email = '{$this->connection->prepare_input($this->email)}',
+         display_name = '{$this->connection->prepare_input("$this->name $this->surname")}'
+         WHERE admin_id = {$this->connection->prepare_input($this->local_id)}");
+       
+       return $upd;
+     }
+     
+     return false;
+   }
   
   /**
    * Set the Maestrano UID on a local user via id lookup
    *
    * @return a user ID if found, null otherwise
    */
-  // protected function setLocalUid()
-  // {
-  //   if($this->local_id) {
-  //     $upd = $this->connection->query("UPDATE user SET mno_uid = {$this->connection->quote($this->uid)} WHERE ID = $this->local_id");
-  //     return $upd;
-  //   }
-  //   
-  //   return false;
-  // }
+  protected function setLocalUid()
+  {
+    if($this->local_id) {
+      $upd = $this->connection->Execute_return_error("UPDATE users 
+        SET mno_uid = '{$this->connection->prepare_input($this->uid)}'
+        WHERE admin_id = {$this->connection->prepare_input($this->local_id)}");
+      
+      return $upd;
+    }
+    
+    return false;
+  }
 }
