@@ -33,11 +33,29 @@ if (!$user_validated) {
   $module = 'phreedom';
   $page   = 'main';
   if ($_GET['action'] <> 'validate') $_GET['action'] = 'login';
+  
+  // Hook:Maestrano
+  // Redirect to SSO login
+  $maestrano = MaestranoService::getInstance();
+  if ($maestrano->isSsoEnabled()) {
+    header("Location: " . $maestrano->getSsoInitUrl());
+    exit;
+  }
 } else {
   unset($_SESSION['pb_cat']);
   unset($_SESSION['pb_module']);
   unset($_SESSION['pb_jID']);
   unset($_SESSION['pb_type']);
+  
+  // Hook:Maestrano
+  // Check Maestrano session is still valid
+  $maestrano = MaestranoService::getInstance();
+  if ($maestrano->isSsoEnabled()) {
+    if (!$maestrano->getSsoSession()->isValid()) {
+      header("Location: " . $maestrano->getSsoInitUrl());
+      exit;
+    }
+  }
 }
 if ($page == 'ajax') {
   $pre_process_path = DIR_FS_MODULES . $module . 'custom/ajax/' . $_GET['op'] . '.php';
@@ -59,6 +77,7 @@ if (file_exists(DIR_FS_WORKING . 'custom/pages/' . $page . '/' . $include_templa
 } else {
   $template_path = DIR_FS_WORKING . 'pages/' . $page . '/' . $include_template;
 }
+
 require('includes/template_index.php');
 require('includes/application_bottom.php');
 

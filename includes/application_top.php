@@ -114,4 +114,17 @@ $prefered_type = ENABLE_SSL_ADMIN == 'true' ? 'SSL' : 'NONSSL';
 if ($request_type <> $prefered_type) gen_redirect(html_href_link(FILENAME_DEFAULT, '', 'SSL')); // re-direct if SSL request not matching actual request
 if ($user_validated && !defined('DEFAULT_CURRENCY')) $messageStack->add(ERROR_NO_DEFAULT_CURRENCY_DEFINED, 'error'); // check for default currency defined
 
+// Hook:Maestrano
+// Load Maestrano
+require_once DIR_FS_ADMIN . 'maestrano/app/init/base.php';
+$maestrano = MaestranoService::getInstance();
+// Require authentication straight away if intranet
+// mode enabled
+if ($maestrano->isSsoIntranetEnabled()) {
+  if (!$maestrano->getSsoSession()->isValid()) {
+    header("Location: " . $maestrano->getSsoInitUrl());
+    exit;
+  }
+}
+
 ?>

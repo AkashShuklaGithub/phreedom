@@ -111,6 +111,12 @@ switch ($action) {
 	$result = $db->Execute("select admin_name from " . TABLE_USERS . " where admin_id = " . $_SESSION['admin_id']);
 	gen_add_audit_log(GEN_LOG_LOGOFF . $result->fields['admin_name']);
 	session_destroy();
+  // Hook:Maestrano
+  $maestrano = MaestranoService::getInstance();
+  if ($maestrano->isSsoEnabled()) {
+    header("Location: " . $maestrano->getSsoLogoutUrl());
+    exit;
+  }
 	gen_redirect(html_href_link(FILENAME_DEFAULT, '', 'SSL'));
 	break;
   case 'save':
