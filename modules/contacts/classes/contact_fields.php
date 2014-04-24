@@ -30,7 +30,7 @@ class contact_fields extends fields{
   
   public function __construct(){
 	$this->type_array[] = array('id' => 'c', 'text' => TEXT_CUSTOMER);
-    $this->type_array[] = array('id' => 'v', 'text' => TEXT_VENDOR);
+    $this->type_array[] = array('id' => 'v', 'text' => TEXT_SUPPLIER);
     $this->type_array[] = array('id' => 'e', 'text' => TEXT_EMPLOYEE);
     $this->type_array[] = array('id' => 'b', 'text' => TEXT_BRANCH);
     parent::__construct();    

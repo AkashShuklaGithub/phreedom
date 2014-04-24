@@ -121,7 +121,7 @@ class journal {
 	global $db, $messageStack;
 	$messageStack->debug("\n\nunPosting Journal... id = " . $this->id . " and action = " . $action . " and journal_id = " . $this->journal_id);
 	if (!$this->check_for_re_post()) return false; // check for dependent records that will need to be re-posted
-	if (!$this->unPost_account_sales_purchases()) return false;	// unPost the customer/vendor history
+	if (!$this->unPost_account_sales_purchases()) return false;	// unPost the customer/supplier history
 	// unPost_chart_balances needs to be unPosted before inventory because inventory may remove journal rows (COGS)
 	if (!$this->unPost_chart_balances()) return false;	// unPost the chart of account values
 	if (!$this->unPost_inventory()) return false;
@@ -407,9 +407,9 @@ class journal {
 /*******************************************************************************************************************/
 // END Chart of Accout Functions
 /*******************************************************************************************************************/
-// START Customer/Vendor Account Functions
+// START Customer/Supplier Account Functions
 /*******************************************************************************************************************/
-// Post the customers/vendors sales/purchases values for the given period
+// Post the customers/suppliers sales/purchases values for the given period
   function Post_account_sales_purchases() {
 	global $db, $messageStack;
 	$messageStack->debug("\n  Posting account sales and purchases ...");
@@ -481,7 +481,7 @@ class journal {
   }
 
 /*******************************************************************************************************************/
-// END Customer/Vendor Account Functions
+// END Customer/Supplier Account Functions
 /*******************************************************************************************************************/
 // START Inventory Functions
 /*******************************************************************************************************************/
@@ -568,7 +568,7 @@ class journal {
 			$assy_cost = $this->calculate_assembly_list($inv_list); // for assembly parts list
 			if ($assy_cost === false) return false; // there was an error
 			break;
-		  case  7: // a vendor credit memo, negate the quantity and process same as customer credit memo
+		  case  7: // a supplier credit memo, negate the quantity and process same as customer credit memo
 			$inv_list['qty'] = -$inv_list['qty']; 
 		  case 13: // a customer credit memo, qty stays positive
 		  case 16:
@@ -699,7 +699,7 @@ class journal {
 			}
 		  }
 		  switch ($this->journal_id) {
-			case  7: // vendor credit memo - negate qty
+			case  7: // supplier credit memo - negate qty
 			case 12: // customer sales - negate quantity
 			case 19: // customer POS - negate quantity
 			  $qty = -$this->journal_rows[$i]['qty'];
@@ -846,7 +846,7 @@ class journal {
 	  $messageStack->debug("\n      Inserting into inventory history = " . arr2string($history_array));
 	  $result = db_perform(TABLE_INVENTORY_HISTORY, $history_array, 'insert');
 	  if ($result->AffectedRows() <> 1) return $this->fail_message(GL_ERROR_POSTING_INV_HISTORY);
-	} else { // for negative quantities, i.e. sales, negative inv adjustments, assemblies, vendor credit memos
+	} else { // for negative quantities, i.e. sales, negative inv adjustments, assemblies, supplier credit memos
 	  // if insert, calculate COGS pulling from one or more history records (inv may go negative)
 	  // update should never happen because COGS is backed out during the unPost inventory function
 	  $working_qty = -$item['qty']; // quantity needs to be positive
@@ -866,7 +866,7 @@ class journal {
 	  while (!$result->EOF) { // loops until either qty is zero and/or inventory history is exhausted
 		if ($defaults['cost_method'] == 'a') { // Average cost
 		  switch ($this->journal_id) {
-			case  7: // vendor credit memo, just need the difference in return price from average price
+			case  7: // supplier credit memo, just need the difference in return price from average price
 			case 14: // assembly, just need the difference in assemble price from piece price
 			  $cost = $avg_cost - $item['price'];
 			  break;
@@ -875,7 +875,7 @@ class journal {
 		  }
 		} else {  // FIFO, LIFO
 		  switch ($this->journal_id) {
-			case  7: // vendor credit memo, just need the difference in return price from purchase price
+			case  7: // supplier credit memo, just need the difference in return price from purchase price
 			case 14: // assembly, just need the difference in assemble price from piece price
 			  $cost = $result->fields['unit_cost'] - $item['price'];
 			  break;
@@ -917,7 +917,7 @@ class journal {
 		// for now, estimate the cost based on the unit_price of the item, will be re-posted (corrected) when product arrives
 		$result = $db->Execute("select item_cost from " . TABLE_INVENTORY . " where sku = '" . $item['sku'] . "'");
 		switch ($this->journal_id) {
-		  case  7: // vendor credit memo, just need the difference in return price from purchase price
+		  case  7: // supplier credit memo, just need the difference in return price from purchase price
 		  case 14: // assembly, just need the difference in assemble price from piece price
 			$cost = $result->fields['item_cost'] - $item['price'];
 			break;
@@ -1429,7 +1429,7 @@ class journal {
 			$auto_type      = AUTO_INC_CUST_ID;
 			$auto_field     = 'next_cust_id_num';
 			break;
-		  case 'v': // vendors
+		  case 'v': // suppliers
 			$auto_type      = AUTO_INC_VEND_ID;
 			$auto_field     = 'next_vend_id_num';
 			break;

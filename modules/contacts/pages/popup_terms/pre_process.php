@@ -21,7 +21,7 @@
 $security_level = validate_user(0, true);
 /**************  include page specific files    *********************/
 /**************   page specific initialization  *************************/
-$account_type = (isset($_GET['type']) ? $_GET['type'] : 'c');	// current types are c (customer) and v (vendor)
+$account_type = (isset($_GET['type']) ? $_GET['type'] : 'c');	// current types are c (customer) and v (supplier)
 switch ($account_type) {
   default:
   case 'c': 

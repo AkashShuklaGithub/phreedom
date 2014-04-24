@@ -89,7 +89,7 @@ if (!defined('INVENTORY_AUTO_FILL')) {
   $db->execute("update " . TABLE_CONFIGURATION . " set configuration_title = 'CD_02_35_TITLE', configuration_description = 'CD_02_35_DESC' where configuration_key = 'AUTO_INC_CUST_ID'");
   $db->execute("update " . TABLE_CONFIGURATION . " set configuration_title = 'CD_02_40_TITLE', configuration_description = 'CD_02_40_DESC' where configuration_key = 'AR_SHOW_CONTACT_STATUS'");
   $db->execute("update " . TABLE_CONFIGURATION . " set configuration_title = 'CD_02_50_TITLE', configuration_description = 'CD_02_50_DESC' where configuration_key = 'AR_TAX_BEFORE_DISCOUNT'");
-  /************************** Group ID 3 (Vendor Defaults) ***********************************************/
+  /************************** Group ID 3 (Supplier Defaults) ***********************************************/
   $db->execute("update " . TABLE_CONFIGURATION . " set configuration_title = 'CD_03_01_TITLE', configuration_description = 'CD_03_01_DESC' where configuration_key = 'AP_DEFAULT_INVENTORY_ACCOUNT'");
   $db->execute("update " . TABLE_CONFIGURATION . " set configuration_title = 'CD_03_02_TITLE', configuration_description = 'CD_03_02_DESC' where configuration_key = 'AP_DEFAULT_PURCHASE_ACCOUNT'");
   $db->execute("update " . TABLE_CONFIGURATION . " set configuration_title = 'CD_03_03_TITLE', configuration_description = 'CD_03_03_DESC' where configuration_key = 'AP_PURCHASE_INVOICE_ACCOUNT'");

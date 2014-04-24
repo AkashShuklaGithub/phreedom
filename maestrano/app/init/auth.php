@@ -5,7 +5,7 @@
 if (!defined('MAESTRANO_ROOT')) {
   define("MAESTRANO_ROOT", realpath(dirname(__FILE__) . '/../../'));
 }
-require MAESTRANO_ROOT . '/app/init/base.php';
+require_once MAESTRANO_ROOT . '/app/init/base.php';
 
 //-----------------------------------------------
 // Require your app specific files here
@@ -18,7 +18,7 @@ chdir(APP_DIR);
 session_start();
 $_SESSION['company'] = 'phreedom';
 
-require APP_DIR . '/includes/application_top.php';
+require_once APP_DIR . '/includes/application_top.php';
 
 //-----------------------------------------------
 // Perform your custom preparation code

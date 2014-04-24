@@ -25,7 +25,7 @@ $type = isset($_GET['type']) ? $_GET['type'] : $_POST['type'];
 switch ($jID) {
   case 18:	// Cash Receipts Journal
 	define('JOURNAL_ID',18);
-	$security_token = ($type == 'v') ? SECURITY_ID_VENDOR_RECEIPTS : SECURITY_ID_CUSTOMER_RECEIPTS;
+	$security_token = ($type == 'v') ? SECURITY_ID_SUPPLIER_RECEIPTS : SECURITY_ID_CUSTOMER_RECEIPTS;
 	break;
   case 20:	// Cash Disbursements Journal
 	define('JOURNAL_ID',20);
@@ -150,7 +150,7 @@ switch ($action) {
 
 	// error check input
 	if (!$order->bill_acct_id) { // no account was selected, error
-	  $contact_type = $type=='c' ? TEXT_LC_CUSTOMER : TEXT_LC_VENDOR;
+	  $contact_type = $type=='c' ? TEXT_LC_CUSTOMER : TEXT_LC_SUPPLIER;
 	  $error = $messageStack->add(sprintf(ERROR_NO_CONTACT_SELECTED, $contact_type, $contact_type, ORD_ADD_UPDATE), 'error');
 	}
 	if (!$order->item_rows) $error = $messageStack->add(GL_ERROR_NO_ITEMS, 'error');

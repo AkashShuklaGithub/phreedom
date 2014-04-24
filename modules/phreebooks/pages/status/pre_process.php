@@ -83,7 +83,7 @@ switch ($action) {
 $heading_array = array(
   'post_date'           => TEXT_DATE,
   'purchase_invoice_id' => constant('ORD_HEADING_NUMBER_' . JOURNAL_ID),
-  'bill_primary_name'   => in_array(JOURNAL_ID, array(9,10,12,13,19)) ? ORD_CUSTOMER_NAME : ORD_VENDOR_NAME,
+  'bill_primary_name'   => in_array(JOURNAL_ID, array(9,10,12,13,19)) ? ORD_CUSTOMER_NAME : ORD_SUPPLIER_NAME,
   'purch_order_id'      => TEXT_REFERENCE,
   'closed'              => TEXT_CLOSED,
   'total_amount'        => TEXT_AMOUNT,
@@ -112,7 +112,7 @@ switch (JOURNAL_ID) {
 	$heading_array['closed'] = ORD_WAITING;
 	$page_title = ORD_TEXT_6_WINDOW_TITLE;
 	break;
-  case  7:	// Vendor Credit Memo Journal
+  case  7:	// Supplier Credit Memo Journal
 	define('POPUP_FORM_TYPE','vend:cm');
 	$heading_array['closed'] = ORD_WAITING;
 	$page_title = ORD_TEXT_7_WINDOW_TITLE;

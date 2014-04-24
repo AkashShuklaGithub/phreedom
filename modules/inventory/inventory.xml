@@ -66,7 +66,7 @@
 	  <Name>description_purchase</Name>
 	  <TagName>PurchaseDescription</TagName>
 	  <Type>varchar(255)</Type>
-	  <Description>Description for Purchase, shows up on orders to vendors</Description>
+	  <Description>Description for Purchase, shows up on orders to suppliers</Description>
 	  <Properties>default NULL</Properties>
 	  <CanImport>1</CanImport>
 	  <Required>0</Required>
@@ -234,10 +234,10 @@
 	  <Required>0</Required>
 	</Field>
 	<Field>
-	  <Name>vendor_id</Name>
-	  <TagName>VendorID</TagName>
+	  <Name>supplier_id</Name>
+	  <TagName>SupplierID</TagName>
 	  <Type>int(11)</Type>
-	  <Description>Specifies contact table record ID of the preferred vendor for the inventory item</Description>
+	  <Description>Specifies contact table record ID of the preferred supplier for the inventory item</Description>
 	  <Properties>NOT NULL default '0'</Properties>
 	  <CanImport>1</CanImport>
 	  <Required>0</Required>

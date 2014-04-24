@@ -36,8 +36,8 @@
 		<type><![CDATA[0]]></type>
 	</filterlist>
 	<filterlist>
-		<fieldname><![CDATA[inventory.vendor_id]]></fieldname>
-		<description><![CDATA[Vendor ID]]></description>
+		<fieldname><![CDATA[inventory.supplier_id]]></fieldname>
+		<description><![CDATA[Supplier ID]]></description>
 		<visible><![CDATA[1]]></visible>
 		<type><![CDATA[0]]></type>
 	</filterlist>

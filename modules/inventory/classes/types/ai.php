@@ -5,7 +5,7 @@ class inventory_ai extends inventory {//Activity Item
 	var $product = array();
 	var $security_level ;
 	var $next_sku = NEXT_SKU;
-	public function __construct($id, $sku, $inactive, $description_short, $description_purchase, $description_sales, $image_with_path, $account_sales_income, $account_inventory_wage, $account_cost_of_sales, $item_taxable, $purch_taxable, $item_cost, $cost_method, $price_sheet, $price_sheet_v, $full_price, $item_weight, $quantity_on_hand, $quantity_on_order, $quantity_on_sales_order, $quantity_on_allocation, $minimum_stock_level, $reorder_quantity, $vendor_id, $lead_time, $upc_code, $serialize, $creation_date, $last_update, $last_journal_date){
+	public function __construct($id, $sku, $inactive, $description_short, $description_purchase, $description_sales, $image_with_path, $account_sales_income, $account_inventory_wage, $account_cost_of_sales, $item_taxable, $purch_taxable, $item_cost, $cost_method, $price_sheet, $price_sheet_v, $full_price, $item_weight, $quantity_on_hand, $quantity_on_order, $quantity_on_sales_order, $quantity_on_allocation, $minimum_stock_level, $reorder_quantity, $supplier_id, $lead_time, $upc_code, $serialize, $creation_date, $last_update, $last_journal_date){
 		$product['id']  					= $id ;
 		$product['sku'] 					= $sku ;
 		$product['$inactive'] 				= $inactive; 
@@ -31,7 +31,7 @@ class inventory_ai extends inventory {//Activity Item
 		$product['quantity_on_allocation'] 	= $quantity_on_allocation; 
 		$product['minimum_stock_level'] 	= $minimum_stock_level; 
 		$product['reorder_quantity'] 		= $reorder_quantity; 
-		$product['vendor_id'] 				= $vendor_id; 
+		$product['supplier_id'] 			= $supplier_id; 
 		$product['lead_time'] 				= $lead_time; 
 		$product['upc_code'] 				= $upc_code; 
 		$product['serialize'] 				= $serialize; 

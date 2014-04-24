@@ -20,7 +20,7 @@
 ?>
 <div id="tab_addbook">
 <?php // *********************** SHIPPING ADDRESSES  *************************************
-  if (defined('MODULE_SHIPPING_STATUS')) { // show shipping address for customers and vendors
+  if (defined('MODULE_SHIPPING_STATUS')) { // show shipping address for customers and suppliers
     echo '  <fieldset>';
     echo '    <legend>' . ACT_CATEGORY_S_ADDRESS . '</legend>';
     echo '    <table id="'.$type.'s_address_form" class="ui-widget" style="border-style:none;width:100%;">';

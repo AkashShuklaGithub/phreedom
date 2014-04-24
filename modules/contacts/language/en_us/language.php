@@ -58,7 +58,7 @@ define('GEN_FAX','Fax');
 define('GEN_TELEPHONE4', 'Mobile Phone');
 define('GEN_ACCOUNT_ID', 'Account ID');
 define('GEN_CUSTOMER_ID', 'Customer ID:');
-define('GEN_VENDOR_ID', 'Vendor ID:');
+define('GEN_SUPPLIER_ID', 'Supplier ID:');
 define('ACT_ACCOUNT_NUMBER','Facebook ID');
 define('ACT_ID_NUMBER','Twitter ID');
 define('GEN_WEBSITE','Website');
@@ -106,18 +106,18 @@ define('ACT_J_ID_NUMBER','Reference PO');
 define('ACT_J_REP_ID','Sales Rep ID');
 define('ACT_J_PAGE_TITLE_EDIT','Edit Project');
 define('ACT_J_ACCOUNT_NUMBER','Break Into Phases:');
-// Text specific to Vendor contacts
-define('ACT_V_TYPE_NAME','Vendors');
-define('ACT_V_HEADING_TITLE', 'Vendors');
-define('ACT_V_SHORT_NAME', 'Vendor ID');
+// Text specific to Supplier contacts
+define('ACT_V_TYPE_NAME','Suppliers');
+define('ACT_V_HEADING_TITLE', 'Suppliers');
+define('ACT_V_SHORT_NAME', 'Supplier ID');
 define('ACT_V_GL_ACCOUNT_TYPE','Purchase GL Account');
 define('ACT_V_ID_NUMBER','Federal EIN');
 define('ACT_V_REP_ID','Purchase Rep ID');
 define('ACT_V_ACCOUNT_NUMBER','Account Number');
-define('ACT_V_FIRST_DATE','Vendor Since: ');
+define('ACT_V_FIRST_DATE','Supplier Since: ');
 define('ACT_V_LAST_DATE1','Last Invoice Date: ');
 define('ACT_V_LAST_DATE2','Last Payment Date: ');
-define('ACT_V_PAGE_TITLE_EDIT','Edit Vendor');
+define('ACT_V_PAGE_TITLE_EDIT','Edit Supplier');
 // Category headings
 define('ACT_CATEGORY_CONTACT','Contact Information');
 define('ACT_CATEGORY_M_ADDRESS','Main Mailing Address');

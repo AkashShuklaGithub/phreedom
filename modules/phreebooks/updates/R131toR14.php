@@ -104,8 +104,8 @@
 
 	if (!defined('ADDRESS_BOOK_EMAIL_REQUIRED')) {
 		$db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) 
-			VALUES ('Account Telephone 1 Field Required', 'ADDRESS_BOOK_TELEPHONE1_REQUIRED', '0', 'Whether or not to require telephone 1 field to be entered in accounts setup (vendors, customers, employees)', '7', '8', NULL , '2007-10-04 00:00:00', NULL , 'cfg_keyed_select_option(array(0 =&gt;''false'', 1=&gt; ''true''),'), 
-				   ('Account Email Address Field Required', 'ADDRESS_BOOK_EMAIL_REQUIRED', '0', 'Whether or not to require the email address field to be entered in accounts setup (vendors, customers, employees)', '7', '9', NULL , '2006-10-04 00:00:00', NULL , 'cfg_keyed_select_option(array(0 =&gt;''false'', 1=&gt; ''true''),');");
+			VALUES ('Account Telephone 1 Field Required', 'ADDRESS_BOOK_TELEPHONE1_REQUIRED', '0', 'Whether or not to require telephone 1 field to be entered in accounts setup (suppliers, customers, employees)', '7', '8', NULL , '2007-10-04 00:00:00', NULL , 'cfg_keyed_select_option(array(0 =&gt;''false'', 1=&gt; ''true''),'), 
+				   ('Account Email Address Field Required', 'ADDRESS_BOOK_EMAIL_REQUIRED', '0', 'Whether or not to require the email address field to be entered in accounts setup (suppliers, customers, employees)', '7', '9', NULL , '2006-10-04 00:00:00', NULL , 'cfg_keyed_select_option(array(0 =&gt;''false'', 1=&gt; ''true''),');");
 	}
 
 	$fields = mysql_list_fields(DB_DATABASE, TABLE_ZONES);
@@ -235,7 +235,7 @@ if (!defined('AUTO_UPDATE_PERIOD')) {
            ( `configuration_title` , `configuration_key` , `configuration_value` , `configuration_description` , `configuration_group_id` , `sort_order` , `last_modified` , `date_added` , `use_function` , `set_function` ) 
     VALUES ( 'Auto-change Accounting Period', 'AUTO_UPDATE_PERIOD', '1', 'Automatically changes the current accounting period based on the server date and current fiscal calendar. If not enabled, the current accounting period must be manually changed in the General Ledger => Utilities menu.', '13', '1', NULL , '2008-01-21 00:00:00', NULL , 'cfg_keyed_select_option(array(0 => \'No\', 1=> \'Yes\'),' ),
            ( 'Add Tax to Customer Shipping Charges', 'AR_ADD_SALES_TAX_TO_SHIPPING', '0', 'If enabled, shipping charges will be added to the calculation of sales tax. If not enabled, shipping will not be taxed.', '2', '30', NULL , '2008-01-21 00:00:00', NULL , 'cfg_keyed_select_option(array(0 => \'No\', 1=> \'Yes\'),' ),
-           ( 'Add Tax to Vendor Shipping Charges', 'AP_ADD_SALES_TAX_TO_SHIPPING', '0', 'If enabled, shipping charges will be added to the calculation of sales tax. If not enabled, shipping will not be taxed.', '3', '30', NULL , '2008-01-21 00:00:00', NULL , 'cfg_keyed_select_option(array(0 => \'No\', 1=> \'Yes\'),' );");
+           ( 'Add Tax to Supplier Shipping Charges', 'AP_ADD_SALES_TAX_TO_SHIPPING', '0', 'If enabled, shipping charges will be added to the calculation of sales tax. If not enabled, shipping will not be taxed.', '3', '30', NULL , '2008-01-21 00:00:00', NULL , 'cfg_keyed_select_option(array(0 => \'No\', 1=> \'Yes\'),' );");
 }
 
 $db->Execute("ALTER TABLE " . TABLE_RECONCILIATION . " CHANGE `statement_balance` `statement_balance` DOUBLE NOT NULL DEFAULT '0'");

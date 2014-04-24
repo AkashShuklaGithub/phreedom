@@ -15,7 +15,7 @@
 // | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   |
 // | GNU General Public License for more details.                    |
 // +-----------------------------------------------------------------+
-//  Path: /modules/phreedom/pages/admin/template_tab_vendor.php
+//  Path: /modules/phreedom/pages/admin/template_tab_supplier.php
 //
 
 ?>

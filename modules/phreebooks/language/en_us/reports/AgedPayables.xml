@@ -14,13 +14,13 @@
 	</tables>
 	<filterlist>
 		<fieldname><![CDATA[contacts.short_name]]></fieldname>
-		<description><![CDATA[Vendor ID]]></description>
+		<description><![CDATA[Supplier ID]]></description>
 		<visible><![CDATA[1]]></visible>
 		<type><![CDATA[0]]></type>
 	</filterlist>
 	<filterlist>
 		<fieldname><![CDATA[journal_main.bill_primary_name]]></fieldname>
-		<description><![CDATA[Vendor Name]]></description>
+		<description><![CDATA[Supplier Name]]></description>
 		<visible><![CDATA[1]]></visible>
 		<type><![CDATA[0]]></type>
 	</filterlist>
@@ -40,7 +40,7 @@
 	</filterlist>
 	<fieldlist>
 		<fieldname><![CDATA[journal_main.bill_primary_name]]></fieldname>
-		<description><![CDATA[Vendor]]></description>
+		<description><![CDATA[Supplier]]></description>
 		<visible><![CDATA[1]]></visible>
 		<columnbreak><![CDATA[1]]></columnbreak>
 		<columnwidth><![CDATA[55]]></columnwidth>
@@ -67,7 +67,7 @@
 	</fieldlist>
 	<fieldlist>
 		<fieldname><![CDATA[contacts.short_name]]></fieldname>
-		<description><![CDATA[Vendor ID]]></description>
+		<description><![CDATA[Supplier ID]]></description>
 		<visible><![CDATA[1]]></visible>
 		<columnbreak><![CDATA[1]]></columnbreak>
 		<columnwidth><![CDATA[25]]></columnwidth>
@@ -144,7 +144,7 @@
 	</fieldlist>
 	<grouplist>
 		<fieldname><![CDATA[contacts.short_name]]></fieldname>
-		<description><![CDATA[Vendor ID]]></description>
+		<description><![CDATA[Supplier ID]]></description>
 		<default><![CDATA[0]]></default>
 		<page_break><![CDATA[0]]></page_break>
 		<processing><![CDATA[0]]></processing>
@@ -153,7 +153,7 @@
 		<datefield><![CDATA[journal_main.post_date]]></datefield>
 		<datelist><![CDATA[ab]]></datelist>
 		<datedefault><![CDATA[a]]></datedefault>
-		<filenameprefix><![CDATA[VendorAging]]></filenameprefix>
+		<filenameprefix><![CDATA[SupplierAging]]></filenameprefix>
 		<filenamefield><![CDATA[journal_main.period]]></filenamefield>
 		<truncate><![CDATA[0]]></truncate>
 		<totalonly><![CDATA[0]]></totalonly>
@@ -215,7 +215,7 @@
 	</sortlist>
 	<sortlist>
 		<fieldname><![CDATA[journal_main.bill_primary_name]]></fieldname>
-		<description><![CDATA[Vendor Name]]></description>
+		<description><![CDATA[Supplier Name]]></description>
 		<default><![CDATA[0]]></default>
 	</sortlist>
 	<custom><![CDATA[s]]></custom>

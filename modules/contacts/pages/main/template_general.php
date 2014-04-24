@@ -30,6 +30,7 @@
         <td align="right"><?php echo constant('ACT_' . strtoupper($type) . '_REP_ID'); ?></td>
         <td><?php echo html_pull_down_menu('dept_rep_id', $sales_rep_array, $cInfo->dept_rep_id ? $cInfo->dept_rep_id : '0'); ?></td>
       </tr>
+<!--
       <tr>
         <td align="right"><?php echo GEN_FIRST_NAME; ?></td>
         <td><?php echo html_input_field('contact_first', $cInfo->contact_first, 'size="33" maxlength="32"', false); ?></td>
@@ -38,6 +39,7 @@
         <td align="right"><?php echo GEN_LAST_NAME; ?></td>
         <td><?php echo html_input_field('contact_last', $cInfo->contact_last, 'size="33" maxlength="32"', false); ?></td>
       </tr>
+-->
       <tr>
        <td align="right"><?php echo constant('ACT_' . strtoupper($type) . '_GL_ACCOUNT_TYPE'); ?></td>
        <td><?php echo html_pull_down_menu('gl_type_account', gen_coa_pull_down(), $action=='new' ? AR_DEF_GL_SALES_ACCT : $cInfo->gl_type_account); ?></td>

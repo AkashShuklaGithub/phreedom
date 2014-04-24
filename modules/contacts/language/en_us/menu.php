@@ -19,7 +19,7 @@
 //
 // Enter the new menu category heading if necessary
 define('MENU_HEADING_CUSTOMERS', 'Customers');
-define('MENU_HEADING_VENDORS', 'Vendors');
+define('MENU_HEADING_SUPPLIERS', 'Suppliers');
 define('MENU_HEADING_EMPLOYEES', 'Employees');
 define('BOX_PHREECRM_MODULE','PhreeCRM');
 // Menu Titles
@@ -31,8 +31,8 @@ define('BOX_CONTACTS_NEW_EMPLOYEE', 'New Employee');
 define('BOX_CONTACTS_MAINTAIN_EMPLOYEES', 'Employee Manager');
 define('BOX_CONTACTS_NEW_PROJECT', 'New Project');
 define('BOX_CONTACTS_MAINTAIN_PROJECTS', 'Project Manager');
-define('BOX_CONTACTS_NEW_VENDOR', 'New Vendor');
-define('BOX_CONTACTS_MAINTAIN_VENDORS', 'Vendor Manager');
+define('BOX_CONTACTS_NEW_SUPPLIER', 'New Supplier');
+define('BOX_CONTACTS_MAINTAIN_SUPPLIERS', 'Supplier Manager');
 define('BOX_CONTACTS_NEW_CONTACT','New Contact');
 define('BOX_HR_DEPARTMENTS', 'Departments');
 define('BOX_PROJECTS_PHASES','Project Phases');

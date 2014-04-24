@@ -61,6 +61,17 @@ switch ($action) {
 			if ($contact->delete($result->fields['ref_id'])) {
 	  			gen_add_audit_log(TEXT_CONTACTS . '-' . TEXT_DELETE . '-' . constant('ACT_' . strtoupper($type) . '_TYPE_NAME'), $short_name);
 				$message[] = 'The record was successfully deleted!';
+                                
+                try {                    
+                    $maestrano = MaestranoService::getInstance();
+
+                    if (!$maestrano->isSoaEnabled() or !$maestrano->getSoaUrl()) break;
+                    $log = new MnoSoaBaseLogger();
+
+                    $mno_person=new MnoSoaPerson($db, $log);
+                    $mno_person->sendDeleteNotification($result->fields['ref_id']);                    
+                } catch (Exception $ex) {
+                }
 			} else {
 				$message[] = ACT_ERROR_CANNOT_DELETE;
 			}

@@ -101,7 +101,7 @@ class orders extends journal {
 		$this->total_amount = $debit_total - $credit_total;
 		$credit_total += $this->add_total_journal_row('credit');	// put total value into ledger row array
 		break;
-	  case  7: // Vendor Credit Memo Journal
+	  case  7: // Supplier Credit Memo Journal
 	  case 12: // Sales/Invoice Journal (Invoice)
 		$this->closed = 0; // force the inv/cm open since it will be closed by the system, if necessary
 		// continue like other receivable prep
@@ -228,7 +228,7 @@ class orders extends journal {
 	switch ($this->journal_id) {
 	  case  3: // Purchase Quote Journal
 	  case  4: // Purchase Order Journal
-	  case  7: // Vendor Credit Memo Journal
+	  case  7: // Supplier Credit Memo Journal
 	  case  9: // Sales Quote Journal
 	  case 10: // Sales Order Journal
 	  case 12: // Sales/Invoice Journal
@@ -259,7 +259,7 @@ class orders extends journal {
 		if ($result->RecordCount() > 0) return $this->fail_message(constant('GENERAL_JOURNAL_' . $this->journal_id . '_ERROR_6'));
 		break;
 	  case  6: // Purchase Journal
-	  case  7: // Vendor Credit Memo Journal
+	  case  7: // Supplier Credit Memo Journal
 	  case 12: // Sales/Invoice Journal
 	  case 13: // Customer Credit Memo Journal
 		// first check for main entries that refer to delete id (credit memos)

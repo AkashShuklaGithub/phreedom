@@ -20,7 +20,7 @@
 
 // Module information
 define('MODULE_CONTACTS_TITLE','Contacts module');
-define('MODULE_CONTACTS_DESCRIPTION','The contacts module manages all customer, vendors, employees, branches and projects used in the PhreeSoft Business Toolkit. <b>NOTE: This is a core module and should not be removed!</b>');
+define('MODULE_CONTACTS_DESCRIPTION','The contacts module manages all customer, suppliers, employees, branches and projects used in the PhreeSoft Business Toolkit. <b>NOTE: This is a core module and should not be removed!</b>');
 // Headings
 define('BOX_CONTACTS_ADMIN','Contacts Administration');
 define('TEXT_BILLING_PREFS','Billing Address Book Settings');
@@ -33,13 +33,13 @@ define('COST_TYPE_CNT','Contractors');
 define('COST_TYPE_EQT','Equipment');
 define('COST_TYPE_OTH','Other');
 define('TEXT_CUSTOMER','Customer');
-define('TEXT_VENDOR','Vendor');
+define('TEXT_SUPPLIER','Supplier');
 define('TEXT_EMPLOYEE','Employee');
 define('TEXT_CONTACT_TYPE','Contact Type');
 define('NEXT_CUST_ID_NUM_DESC','Next Customer ID');
-define('NEXT_VEND_ID_NUM_DESC','Next Vendor ID');
+define('NEXT_VEND_ID_NUM_DESC','Next Supplier ID');
 /************************** (Address Book Defaults) ***********************************************/
-define('CONTACT_BILL_FIELD_REQ', 'Whether or not to require field: %s to be entered for a new main/billing address (for vendors, customers, and employees)');
+define('CONTACT_BILL_FIELD_REQ', 'Whether or not to require field: %s to be entered for a new main/billing address (for suppliers, customers, and employees)');
 /************************** (Departments) ***********************************************/
 define('HR_POPUP_WINDOW_TITLE','Departments');
 define('HR_HEADING_SUBACCOUNT', 'Subdepartment');

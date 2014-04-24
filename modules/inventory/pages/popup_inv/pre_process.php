@@ -22,7 +22,7 @@ $security_level = validate_user(0, true);
 require(DIR_FS_WORKING . 'defaults.php');
 require(DIR_FS_WORKING . 'functions/inventory.php');
 /**************   page specific initialization  *************************/
-$account_type = isset($_GET['type'])    ? $_GET['type']    : 'c';	// current types are c (customer) and v (vendor)
+$account_type = isset($_GET['type'])    ? $_GET['type']    : 'c';	// current types are c (customer) and v (supplier)
 $rowID        = isset($_GET['rowID'])   ? $_GET['rowID']   : 0;
 $store_id     = isset($_GET['storeID']) ? $_GET['storeID'] : 0;
 $contactID    = isset($_GET['cID'])     ? $_GET['cID']     : 0;
@@ -30,7 +30,7 @@ $assembly     = isset($_GET['asy'])     ? true             : false;
 // load the filters
 $f0 = $_GET['f0'] = isset($_POST['f0']) ? $_POST['f0'] : $_GET['f0']; // show inactive checkbox
 $f1 = $_GET['f0'] = isset($_POST['f1']) ? $_POST['f1'] : $_GET['f1']; // inventory_type dropdown
-$f2 = $_GET['f0'] = isset($_POST['f2']) ? $_POST['f2'] : $_GET['f2']; // limit to preferred_vendor checkbox
+$f2 = $_GET['f0'] = isset($_POST['f2']) ? $_POST['f2'] : $_GET['f2']; // limit to preferred_supplier checkbox
 // save the filters for page jumps
 $_GET['f0'] = $f0;
 $_GET['f1'] = $f1;
@@ -103,7 +103,7 @@ if ($f1) { // sort by inventory type
 	default:    $criteria[] = "inventory_type = '$f1'";                     break;
   }
 }
-if ($f2 && $contactID) $criteria[] = "vendor_id = " . $contactID; // limit to preferred vendor flag
+if ($f2 && $contactID) $criteria[] = "supplier_id = " . $contactID; // limit to preferred supplier flag
 // build search filter string
 $search = (sizeof($criteria) > 0) ? (' where ' . implode(' and ', $criteria)) : '';
 

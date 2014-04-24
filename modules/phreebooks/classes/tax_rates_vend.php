@@ -22,7 +22,7 @@ require_once(DIR_FS_MODULES . 'phreebooks/classes/tax_rates.php');
 class tax_rates_vend extends tax_rates {
 	public $code        = 'tax_rates_vend'; // needs to match class name
     public $help_path   = '07.08.03.02';
-    public $type        = 'v'; // choices are c for customers and v for vendors
+    public $type        = 'v'; // choices are c for customers and v for suppliers
   
 }
 ?>

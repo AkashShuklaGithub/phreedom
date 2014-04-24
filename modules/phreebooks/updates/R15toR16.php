@@ -59,7 +59,7 @@ if (!defined('AR_SHOW_CONTACT_STATUS')) {
   $db->Execute("INSERT INTO " .  TABLE_CONFIGURATION . " 
            ( `configuration_title` , `configuration_key` , `configuration_value` , `configuration_description` , `configuration_group_id` , `sort_order` , `last_modified` , `date_added` , `use_function` , `set_function` ) 
     VALUES ( 'Show popup with customer account status on order screens', 'AR_SHOW_CONTACT_STATUS', '0', 'This feature displays a customer status popup on the order screens when a customer is selected from the contact search popup. It displays balances, account aging as well as the active status of the account.', '2', '40', NULL , now(), NULL , 'cfg_keyed_select_option(array(0 =>\'No\', 1=>\'Yes\'),' ),
-           ( 'Show popup with vendor account status on order screens', 'AP_SHOW_CONTACT_STATUS', '0', 'This feature displays a vendor status popup on the order screens when a vendor is selected from the contact search popup. It displays balances, account aging as well as the active status of the account.', '3', '40', NULL , now(), NULL , 'cfg_keyed_select_option(array(0 =>\'No\', 1=>\'Yes\'),' );");
+           ( 'Show popup with supplier account status on order screens', 'AP_SHOW_CONTACT_STATUS', '0', 'This feature displays a supplier status popup on the order screens when a supplier is selected from the contact search popup. It displays balances, account aging as well as the active status of the account.', '3', '40', NULL , now(), NULL , 'cfg_keyed_select_option(array(0 =>\'No\', 1=>\'Yes\'),' );");
   // convert the contacts sales account links from admin id's to employee contact id's
   $result = $db->Execute("select admin_id, account_id from " . TABLE_USERS);
   while (!$result->EOF) {

@@ -111,7 +111,7 @@ class statement_builder {
 	  $result->MoveNext();
 	}
 	$this->balance_due = $this->prior_balance + $this->statememt_total;
-	if ($this->type == 'v') { // invert amount for vendors for display purposes
+	if ($this->type == 'v') { // invert amount for suppliers for display purposes
 		$this->prior_balance = -$this->prior_balance; 
 		$this->balance_due   = -$this->balance_due;
 	}

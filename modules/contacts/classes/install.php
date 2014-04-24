@@ -219,7 +219,7 @@ class contacts_admin {
 	if (admin_add_report_folder($id, TEXT_REPORTS,           'cust', 'fr')) $error = true;
 	$id = admin_add_report_heading(MENU_HEADING_EMPLOYEES,   'hr');
 	if (admin_add_report_folder($id, TEXT_REPORTS,           'hr',   'fr')) $error = true;
-	$id = admin_add_report_heading(MENU_HEADING_VENDORS,     'vend');
+	$id = admin_add_report_heading(MENU_HEADING_SUPPLIERS,     'vend');
 	if (admin_add_report_folder($id, TEXT_REPORTS,           'vend', 'fr')) $error = true;
 	return $error;
   }

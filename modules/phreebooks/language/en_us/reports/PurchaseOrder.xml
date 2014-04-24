@@ -843,7 +843,7 @@
 		<bordershow><![CDATA[1]]></bordershow>
 		<bordercolor><![CDATA[0:0:0]]></bordercolor>
 	</fieldlist>
-		<description><![CDATA[Vendor purchase order. Format: Letter, Portrait]]></description>
+		<description><![CDATA[Supplier purchase order. Format: Letter, Portrait]]></description>
 		<datefield><![CDATA[journal_main.post_date]]></datefield>
 		<datelist><![CDATA[abcdefghijk]]></datelist>
 		<datedefault><![CDATA[c]]></datedefault>
