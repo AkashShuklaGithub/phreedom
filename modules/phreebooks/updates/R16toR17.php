@@ -71,7 +71,7 @@ if (!defined('AUTO_INC_CUST_ID')) {
   $db->Execute("update " . TABLE_CURRENT_STATUS . " set next_cust_id_num = 'C10000'");
   $db->Execute("INSERT INTO " .  TABLE_CONFIGURATION . " 
            ( `configuration_title` , `configuration_key` , `configuration_value` , `configuration_description` , `configuration_group_id` , `sort_order` , `last_modified` , `date_added` , `use_function` , `set_function` ) 
-    VALUES ( 'Auto Increment Vendor ID', 'AUTO_INC_VEND_ID', '0', 'If set to true, this option will automatically assign an ID to new vendors when they are created.', '3', '35', NULL , now(), NULL , 'cfg_keyed_select_option(array(1=>\'Yes\', 0=>\'No\'),' );");
+    VALUES ( 'Auto Increment Supplier ID', 'AUTO_INC_VEND_ID', '0', 'If set to true, this option will automatically assign an ID to new suppliers when they are created.', '3', '35', NULL , now(), NULL , 'cfg_keyed_select_option(array(1=>\'Yes\', 0=>\'No\'),' );");
   $db->Execute("alter table " . TABLE_CURRENT_STATUS . " add next_vend_id_num VARCHAR(16) NOT NULL");
   $db->Execute("update " . TABLE_CURRENT_STATUS . " set next_vend_id_num = 'V10000'");
   // increase SKU length to 24 characters
@@ -90,7 +90,7 @@ if (!defined('AUTO_INC_CUST_ID')) {
 if (!defined('LIMIT_HISTORY_RESULTS')) {
   $db->Execute("INSERT INTO " .  TABLE_CONFIGURATION . " 
            ( `configuration_title` , `configuration_key` , `configuration_value` , `configuration_description` , `configuration_group_id` , `sort_order` , `last_modified` , `date_added` , `use_function` , `set_function` ) 
-    VALUES ( 'Limit Customer/Vendor History Results', 'LIMIT_HISTORY_RESULTS', '20', 'Limits the length of history values shown in customer/vendor accounts for sales/purchases.', '8', '10', NULL , now(), NULL , '' );");
+    VALUES ( 'Limit Customer/Supplier History Results', 'LIMIT_HISTORY_RESULTS', '20', 'Limits the length of history values shown in customer/supplier accounts for sales/purchases.', '8', '10', NULL , now(), NULL , '' );");
 }
 
 ?>

@@ -230,7 +230,7 @@ class phreebooks_admin {
 		  description_short char(15) NOT NULL default '',
 		  description_long char(64) NOT NULL default '',
 		  account_id char(15) NOT NULL default '',
-		  vendor_id int(5) NOT NULL default '0',
+		  supplier_id int(5) NOT NULL default '0',
 		  tax_rate float NOT NULL default '0',
 		  PRIMARY KEY  (tax_auth_id),
 		  KEY description_short (description_short)
@@ -373,13 +373,13 @@ class phreebooks_admin {
 	if (admin_add_report_folder($id, PB_PF_CUST_STATEMENT,   'cust:stmt', 'ff')) $error = true;
 	if (admin_add_report_folder($id, PB_PF_COLLECT_LTR,      'cust:col',  'ff')) $error = true;
 	if (admin_add_report_folder($id, PB_PF_CUST_LABEL,       'cust:lblc', 'ff')) $error = true;
-	$id = admin_add_report_heading(MENU_HEADING_VENDORS,     'vend');
+	$id = admin_add_report_heading(MENU_HEADING_SUPPLIERS,     'vend');
 	if (admin_add_report_folder($id, TEXT_REPORTS,           'vend',      'fr')) $error = true;
-	if (admin_add_report_folder($id, PB_PF_VENDOR_QUOTE,     'vend:quot', 'ff')) $error = true;
+	if (admin_add_report_folder($id, PB_PF_SUPPLIER_QUOTE,     'vend:quot', 'ff')) $error = true;
 	if (admin_add_report_folder($id, PB_PF_PURCH_ORDER,      'vend:po',   'ff')) $error = true;
-	if (admin_add_report_folder($id, PB_PF_VENDOR_CRD_MEMO,  'vend:cm',   'ff')) $error = true;
-	if (admin_add_report_folder($id, PB_PF_VENDOR_LABEL,     'vend:lblv', 'ff')) $error = true;
-	if (admin_add_report_folder($id, PB_PF_VENDOR_STATEMENT, 'vend:stmt', 'ff')) $error = true;
+	if (admin_add_report_folder($id, PB_PF_SUPPLIER_CRD_MEMO,  'vend:cm',   'ff')) $error = true;
+	if (admin_add_report_folder($id, PB_PF_SUPPLIER_LABEL,     'vend:lblv', 'ff')) $error = true;
+	if (admin_add_report_folder($id, PB_PF_SUPPLIER_STATEMENT, 'vend:stmt', 'ff')) $error = true;
 	$id = admin_add_report_heading(MENU_HEADING_BANKING,     'bnk');
 	if (admin_add_report_folder($id, TEXT_REPORTS,           'bnk',       'fr')) $error = true;
 	if (admin_add_report_folder($id, PB_PF_DEP_SLIP,         'bnk:deps',  'ff')) $error = true;

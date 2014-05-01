@@ -23,7 +23,7 @@ require(DIR_FS_WORKING . 'functions/contacts.php');
 require(DIR_FS_WORKING . 'classes/contacts.php');
 /**************   page specific initialization  *************************/
 define('JOURNAL_ID',(int)$_GET['jID']);
-$account_type = (isset($_GET['type']) ? $_GET['type'] : 'c');	// current types are c (customer) and v (vendor)
+$account_type = (isset($_GET['type']) ? $_GET['type'] : 'c');	// current types are c (customer) and v (supplier)
 switch ($account_type) {
   default:
   case 'c': $terms_type = 'AR'; break;

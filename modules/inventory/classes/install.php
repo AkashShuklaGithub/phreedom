@@ -95,7 +95,7 @@ class inventory_admin {
 		  quantity_on_allocation float NOT NULL default '0',
 		  minimum_stock_level float NOT NULL default '0',
 		  reorder_quantity float NOT NULL default '0',
-		  vendor_id int(11) NOT NULL default '0',
+		  supplier_id int(11) NOT NULL default '0',
 		  lead_time int(3) NOT NULL default '1',
 		  upc_code varchar(13) NOT NULL DEFAULT '',
 		  serialize enum('0','1') NOT NULL default '0',

@@ -26,7 +26,7 @@ define('ORD_TEXT_2_WINDOW_TITLE', 'General Journal');
 define('ORD_TEXT_3_WINDOW_TITLE', 'Request for Quotes');
 define('ORD_TEXT_4_WINDOW_TITLE', 'Purchase Orders');
 define('ORD_TEXT_6_WINDOW_TITLE', 'Purchase/Receive Inventory');
-define('ORD_TEXT_7_WINDOW_TITLE', 'Vendor Credit Memos');
+define('ORD_TEXT_7_WINDOW_TITLE', 'Supplier Credit Memos');
 define('ORD_TEXT_9_WINDOW_TITLE', 'Sales Quotes');
 define('ORD_TEXT_10_WINDOW_TITLE','Sales Orders');
 define('ORD_TEXT_12_WINDOW_TITLE','Sales/Invoices');
@@ -34,7 +34,7 @@ define('ORD_TEXT_13_WINDOW_TITLE','Customer Credit Memos');
 define('ORD_TEXT_18_WINDOW_TITLE','Cash Receipts');
 define('ORD_TEXT_20_WINDOW_TITLE','Cash Distributions');
 define('ORD_TEXT_18_C_WINDOW_TITLE','Customer Receipts');
-define('ORD_TEXT_18_V_WINDOW_TITLE','Vendor Refunds');
+define('ORD_TEXT_18_V_WINDOW_TITLE','Supplier Refunds');
 define('ORD_TEXT_20_C_WINDOW_TITLE','Customer Refunds');
 define('ORD_TEXT_20_V_WINDOW_TITLE','Pay Bills');
 

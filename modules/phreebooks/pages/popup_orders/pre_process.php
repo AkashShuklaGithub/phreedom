@@ -31,7 +31,7 @@ switch (JOURNAL_ID) {
 		define('GL_TYPE','poo');
 		break;
 	case  6:	// Purchase Journal
-	case  7:	// Vendor Credit Memo Journal
+	case  7:	// Supplier Credit Memo Journal
 	case 21:	// Point of Purchase Journal
 		define('GL_TYPE','por');
 		break;
@@ -101,7 +101,7 @@ switch (JOURNAL_ID) {
   default: 
 	$heading_array['closed']         = TEXT_CLOSED;
 }
-$heading_array['bill_primary_name'] = in_array(JOURNAL_ID, array(12,13)) ? ORD_CUSTOMER_NAME : ORD_VENDOR_NAME;
+$heading_array['bill_primary_name'] = in_array(JOURNAL_ID, array(12,13)) ? ORD_CUSTOMER_NAME : ORD_SUPPLIER_NAME;
 $heading_array['total_amount']      = TEXT_AMOUNT;
 $result      = html_heading_bar($heading_array, $_GET['sf'], $_GET['so'], array());
 $list_header = $result['html_code'];

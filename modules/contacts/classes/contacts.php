@@ -116,7 +116,7 @@ class contacts {
   	global $db; 
   	if ( $this->id == '' ) $this->id = $id;
 	// error check, no delete if a journal entry exists
-	$result = $db->Execute("select id from ".TABLE_JOURNAL_MAIN." where bill_acct_id =". $this->id." or ship_acct_id =". $this->id ."or store_id =". $this->id ."limit 1");
+	$result = $db->Execute("select id from ".TABLE_JOURNAL_MAIN." where bill_acct_id =". $this->id." or ship_acct_id =". $this->id ." or store_id =". $this->id ." limit 1");
 	if ($result->RecordCount() == 0) {
 	  return $this->do_delete();
 	}
@@ -245,12 +245,19 @@ class contacts {
     }
   }
   
-  public function save_addres(){
+  public function save_addres($setDefaultPrimaryName = false){
   	global $db;
     // address book fields
     foreach ($this->address_types as $value) {
-      if (($value <> 'im' && substr($value, 1, 1) == 'm') || // all main addresses except contacts which is optional
-        ($this->address[$value]['primary_name'] <> '')) { // billing, shipping, and contact if primary_name present
+        if ($value == "im" &&
+            $this->address[$value]['address_id'] == '' && 
+            empty($this->address[$value]['primary_name']) && 
+            $setDefaultPrimaryName) {
+            $this->address[$value]['primary_name'] = "Main";
+        }
+        
+      if ((($value <> 'im' && substr($value, 1, 1) == 'm') || // all main addresses except contacts which is optional
+        ($this->address[$value]['primary_name'] <> '')) && !empty($this->id)) { // billing, shipping, and contact if primary_name present
               $sql_data_array = array(
                     'ref_id'         => $this->id,
                     'type'           => $value,

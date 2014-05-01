@@ -45,8 +45,8 @@ if (defined('MODULE_SHIPPING_STATUS')) {
 }
 /**************   page specific initialization  *************************/
 switch (JOURNAL_ID) {
-  case 3:		// Vendor Quote Journal
-	define('ORD_ACCT_ID',GEN_VENDOR_ID);
+  case 3:		// Supplier Quote Journal
+	define('ORD_ACCT_ID',GEN_SUPPLIER_ID);
 	define('GL_TYPE','poo');				// code to use for journal rows
 	define('DEF_INV_GL_ACCT',AP_DEFAULT_INVENTORY_ACCOUNT);	// default account to use for item rows
 	define('DEF_GL_ACCT',$_SESSION['admin_prefs']['def_ap_acct'] ? $_SESSION['admin_prefs']['def_ap_acct'] : AP_DEFAULT_PURCHASE_ACCOUNT);
@@ -57,10 +57,10 @@ switch (JOURNAL_ID) {
 	$item_col_1_enable = true;				// allow/disallow entry of item columns
 	$item_col_2_enable = false;
 	define('POPUP_FORM_TYPE','vend:quot');	// form type to use for printing
-	$account_type = 'v';					// choices are v - vendor or c - customer
+	$account_type = 'v';					// choices are v - supplier or c - customer
 	break;
   case 4:		// Purchase Order Journal
-	define('ORD_ACCT_ID',GEN_VENDOR_ID);
+	define('ORD_ACCT_ID',GEN_SUPPLIER_ID);
 	define('GL_TYPE','poo');				// code to use for journal rows
 	define('DEF_INV_GL_ACCT',AP_DEFAULT_INVENTORY_ACCOUNT);	// default account to use for item rows
 	define('DEF_GL_ACCT',$_SESSION['admin_prefs']['def_ap_acct'] ? $_SESSION['admin_prefs']['def_ap_acct'] : AP_DEFAULT_PURCHASE_ACCOUNT);
@@ -71,10 +71,10 @@ switch (JOURNAL_ID) {
 	$item_col_1_enable = true;				// allow/disallow entry of item columns
 	$item_col_2_enable = false;
 	define('POPUP_FORM_TYPE','vend:po');		// form type to use for printing
-	$account_type = 'v';					// choices are v - vendor or c - customer
+	$account_type = 'v';					// choices are v - supplier or c - customer
 	break;
   case 6:		// Purchase Journal (accounts payable - pay later)
-	define('ORD_ACCT_ID',GEN_VENDOR_ID);
+	define('ORD_ACCT_ID',GEN_SUPPLIER_ID);
 	define('GL_TYPE','por');
 	define('DEF_INV_GL_ACCT',AP_DEFAULT_INVENTORY_ACCOUNT);
 	define('DEF_GL_ACCT',$_SESSION['admin_prefs']['def_ap_acct'] ? $_SESSION['admin_prefs']['def_ap_acct'] : AP_DEFAULT_PURCHASE_ACCOUNT);
@@ -87,8 +87,8 @@ switch (JOURNAL_ID) {
 	define('POPUP_FORM_TYPE','');
 	$account_type = 'v';
 	break;
-  case 7:		// Vendor Credit Memo Journal (unpaid invoice returned product to vendor)
-	define('ORD_ACCT_ID',GEN_VENDOR_ID);
+  case 7:		// Supplier Credit Memo Journal (unpaid invoice returned product to supplier)
+	define('ORD_ACCT_ID',GEN_SUPPLIER_ID);
 	define('GL_TYPE','por');
 	define('DEF_INV_GL_ACCT',AP_DEFAULT_INVENTORY_ACCOUNT);
 	define('DEF_GL_ACCT',$_SESSION['admin_prefs']['def_ap_acct'] ? $_SESSION['admin_prefs']['def_ap_acct'] : AP_DEFAULT_PURCHASE_ACCOUNT);
@@ -113,7 +113,7 @@ switch (JOURNAL_ID) {
 	$item_col_1_enable = true;				// allow/disallow entry of item columns
 	$item_col_2_enable = false;
 	define('POPUP_FORM_TYPE','cust:quot');	// form type to use for printing
-	$account_type = 'c';					// choices are v - vendor or c - customer
+	$account_type = 'c';					// choices are v - supplier or c - customer
 	break;
   case 10:	// Sales Order Journal
 	define('ORD_ACCT_ID',GEN_CUSTOMER_ID);
@@ -292,7 +292,7 @@ switch ($action) {
 	}
 	// check for errors (address fields)
 	if (!$order->bill_acct_id && !$order->bill_add_update) {
-	  $contact_type = $account_type=='c' ? TEXT_LC_CUSTOMER : TEXT_LC_VENDOR;
+	  $contact_type = $account_type=='c' ? TEXT_LC_CUSTOMER : TEXT_LC_SUPPLIER;
 	  $messageStack->add(sprintf(ERROR_NO_CONTACT_SELECTED, $contact_type, $contact_type, ORD_ADD_UPDATE), 'error');
 	  break; // go no further
 	}

@@ -31,7 +31,7 @@ $customer = $db->Execute("select c.type, c.inactive, c.special_terms, a.notes
 $notes    = $customer->fields['notes'] ? str_replace(chr(10), "<br />", $customer->fields['notes']) : '&nbsp;';
 $type     = $customer->fields['type'] == 'v' ? 'AP' : 'AR';
 $new_data = calculate_aging($id, $customer->fields['type'], $customer->fields['special_terms']);
-// set the customer/vendor status in order of importance
+// set the customer/supplier status in order of importance
 if ($customer->fields['inactive']) {
   $inactive_flag = 'class="ui-state-error"';
   $status_text = TEXT_INACTIVE;

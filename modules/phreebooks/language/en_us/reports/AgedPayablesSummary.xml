@@ -34,7 +34,7 @@
 	</filterlist>
 	<fieldlist>
 		<fieldname><![CDATA[journal_main.bill_primary_name]]></fieldname>
-		<description><![CDATA[Vendor]]></description>
+		<description><![CDATA[Supplier]]></description>
 		<visible><![CDATA[1]]></visible>
 		<columnbreak><![CDATA[1]]></columnbreak>
 		<columnwidth><![CDATA[60]]></columnwidth>
@@ -61,7 +61,7 @@
 	</fieldlist>
 	<fieldlist>
 		<fieldname><![CDATA[contacts.short_name]]></fieldname>
-		<description><![CDATA[Vendor ID]]></description>
+		<description><![CDATA[Supplier ID]]></description>
 		<visible><![CDATA[1]]></visible>
 		<columnbreak><![CDATA[1]]></columnbreak>
 		<columnwidth><![CDATA[30]]></columnwidth>
@@ -110,7 +110,7 @@
 	</fieldlist>
 	<grouplist>
 		<fieldname><![CDATA[journal_main.bill_acct_id]]></fieldname>
-		<description><![CDATA[Vendor ID]]></description>
+		<description><![CDATA[Supplier ID]]></description>
 		<default><![CDATA[0]]></default>
 		<page_break><![CDATA[0]]></page_break>
 	</grouplist>

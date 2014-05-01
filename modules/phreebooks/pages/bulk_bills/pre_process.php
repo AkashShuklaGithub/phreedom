@@ -87,7 +87,7 @@ switch ($action) {
 	// ***************************** START TRANSACTION *******************************
 	$first_payment_ref = $purchase_invoice_id; // first check number, needed for printing
 	$db->transStart();
-	// post each payment by vendor (save journal record id)
+	// post each payment by supplier (save journal record id)
 	foreach ($payment_list as $account => $values) {
 	  $order = new banking();
 	  // load journal main data
@@ -176,7 +176,7 @@ $gl_array_list = gen_coa_pull_down();
 // build the list header
 $heading_array = array(
   'post_date'           => BNK_INVOICE_DATE,
-  'bill_primary_name'   => BNK_VENDOR_NAME,
+  'bill_primary_name'   => BNK_SUPPLIER_NAME,
   'purchase_invoice_id' => BNK_INVOICE_NUM,
   'total_amount'        => BNK_AMOUNT_DUE,
 );

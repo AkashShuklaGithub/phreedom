@@ -172,7 +172,7 @@ echo $toolbar->build_toolbar();
 				<td align="right"><?php echo constant('ORD_HEADING_NUMBER_' . JOURNAL_ID); ?></td>
 				<td><?php echo html_input_field('purchase_invoice_id', $order->purchase_invoice_id, 'onmouseover="Tip(\'' . ORD_TT_PURCH_INV_NUM . '\')"'); ?></td>
 			  </tr>
-<?php if (isset($template_options['waiting'])) {	// show waiting for invoice (purchase_receive, vendor cm) checkbox ?>
+<?php if (isset($template_options['waiting'])) {	// show waiting for invoice (purchase_receive, supplier cm) checkbox ?>
 			  <tr>
 				<td align="right"><?php echo $template_options['waiting']['title']; ?></td>
 				<td><?php echo $template_options['waiting']['field']; ?></td>

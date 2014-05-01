@@ -1327,7 +1327,7 @@ function PreProcessLowStock() {
   }
   var acct   = document.getElementById('bill_acct_id').value;
   if (!acct){
-    alert(lowStockNoVendor);
+    alert(lowStockNoSupplier);
     return;
   }
   var store  = document.getElementById('store_id').value;

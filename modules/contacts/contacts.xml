@@ -31,7 +31,7 @@
 	  <Name>type</Name>
 	  <TagName>ContactType</TagName>
 	  <Type>char (1)</Type>
-	  <Description>A single character contact type field: b-Branch; c-Customer; v-Vendor; e-Employee; p-Project; i-Contact</Description>
+	  <Description>A single character contact type field: b-Branch; c-Customer; v-Supplier; e-Employee; p-Project; i-Contact</Description>
 	  <Properties>default 'c'</Properties>
 	  <CanImport>1</CanImport>
 	  <Required>1</Required>

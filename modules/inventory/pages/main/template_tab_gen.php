@@ -111,7 +111,7 @@
 	</table>
     <table class="ui-widget" style="border-style:none;width:100%">
  	 <thead class="ui-widget-header">
-	   <tr><th colspan="5"><?php echo TEXT_VENDOR_DETAILS; ?></th></tr>
+	   <tr><th colspan="5"><?php echo TEXT_SUPPLIER_DETAILS; ?></th></tr>
 	 </thead>
 	 <tbody class="ui-widget-content">
 	<tr>
@@ -132,8 +132,8 @@
 	<tr>
 	  <td align="right"><?php echo TEXT_DEFAULT_PRICE_SHEET; ?></td>
 	  <td><?php echo html_pull_down_menu('price_sheet_v', get_price_sheet_data('v'), $cInfo->price_sheet_v); ?></td>
-	  <td align="right"><?php echo INV_HEADING_PREFERRED_VENDOR; ?></td>
-	  <td colspan="2"><?php echo html_pull_down_menu('vendor_id', gen_get_contact_array_by_type('v'), $cInfo->vendor_id); ?></td>
+	  <td align="right"><?php echo INV_HEADING_PREFERRED_SUPPLIER; ?></td>
+	  <td colspan="2"><?php echo html_pull_down_menu('supplier_id', gen_get_contact_array_by_type('v'), $cInfo->supplier_id); ?></td>
 	</tr>
 <?php } ?>
 	</tbody>

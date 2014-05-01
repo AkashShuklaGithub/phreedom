@@ -20,7 +20,7 @@
 // Release History
 // 3.0 => 2011-01-15 - Converted from stand-alone PhreeBooks release
 // 3.1 => 2011-04-15 - Bug fixes
-// 3.2 => 2011-08-01 - added vendor price seets, bug fixes
+// 3.2 => 2011-08-01 - added supplier price seets, bug fixes
 // 3.3 => 2011-11-15 - bug fixes, themeroller changes
 // 3.4 => 2012-02-15 - bug fixes
 // 3.5 => 2012-10-01 - bug fixes
@@ -96,7 +96,7 @@ $menu[] = array(
 );
 $menu[] = array(
   'text'        => BOX_PURCHASE_PRICE_SHEETS,
-  'heading'     => MENU_HEADING_VENDORS,
+  'heading'     => MENU_HEADING_SUPPLIERS,
   'rank'        => 65, 
   'security_id' => SECURITY_ID_VEND_PRICE_SHEET_MGR, 
   'link'        => html_href_link(FILENAME_DEFAULT, 'module=inventory&amp;page=price_sheets&amp;type=v&amp;list=1', 'SSL'),

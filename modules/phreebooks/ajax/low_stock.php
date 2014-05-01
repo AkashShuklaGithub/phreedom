@@ -22,11 +22,11 @@ $xml   = NULL;
 $security_level = validate_ajax_user();
 /**************  include page specific files    *********************/
 /**************   page specific initialization  *************************/
-$cID = db_prepare_input($_GET['cID']); //vendor
+$cID = db_prepare_input($_GET['cID']); //supplier
 $sID = db_prepare_input($_GET['sID']); //store
 $rID = db_prepare_input($_GET['rID']); //row
 if (isset($sID) && ENABLE_MULTI_BRANCH) $where = " store_id = $sID and ";
-$where .= " vendor_id = $cID";	
+$where .= " supplier_id = $cID";	
 if (ENABLE_MULTI_BRANCH) {
   $quantity = " sum(remaining) as 'quantity' ";
   $quantity_where = "remaining";

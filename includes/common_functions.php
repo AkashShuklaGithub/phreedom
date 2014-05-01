@@ -262,17 +262,17 @@
 
   function gen_get_contact_type($id) {
     global $db;
-    $vendor_type = $db->Execute("select type from " . TABLE_CONTACTS . " where id = '" . $id . "'");
-    return ($vendor_type->RecordCount() == 1) ? $vendor_type->fields['type'] : false;
+    $supplier_type = $db->Execute("select type from " . TABLE_CONTACTS . " where id = '" . $id . "'");
+    return ($supplier_type->RecordCount() == 1) ? $supplier_type->fields['type'] : false;
   }
 
   function gen_get_contact_name($id) {
     global $db;
-    $vendor_name = $db->Execute("select short_name from " . TABLE_CONTACTS . " where id = '" . $id . "'");
-    if ($vendor_name->RecordCount() < 1) {
+    $supplier_name = $db->Execute("select short_name from " . TABLE_CONTACTS . " where id = '" . $id . "'");
+    if ($supplier_name->RecordCount() < 1) {
       return false;
     } else {
-      return $vendor_name->fields['short_name'];
+      return $supplier_name->fields['short_name'];
     }
   }
 

@@ -22,7 +22,7 @@ class tax_rates {
 	public $code        = 'tax_rates'; // needs to match class name
 	public $db_table    = TABLE_TAX_RATES;
     public $help_path   = '07.08.03.02';
-    public $type        = 'c'; // choices are c for customers and v for vendors
+    public $type        = 'c'; // choices are c for customers and v for suppliers
     public $error       = false;
 	
     public function __construct(){

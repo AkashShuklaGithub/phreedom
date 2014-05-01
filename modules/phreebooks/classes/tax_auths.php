@@ -22,7 +22,7 @@ class tax_auths {
 	public $code        = 'tax_auths'; // needs to match class name
     public $db_table    = TABLE_TAX_AUTH;
     public $help_path   = '07.08.03.01';
-    public $type        = 'c'; // choices are c for customers and v for vendors
+    public $type        = 'c'; // choices are c for customers and v for suppliers
     public $error       = false;
     
     public function __construct(){
@@ -42,7 +42,7 @@ class tax_auths {
 		'description_short' => $this->description_short,
 		'description_long'  => $this->description_long,
 		'account_id'        => $this->account_id,
-		'vendor_id'         => $this->vendor_id,
+		'supplier_id'         => $this->supplier_id,
 		'tax_rate'          => $this->tax_rate,
 	);
     if ($id) {
@@ -117,7 +117,7 @@ class tax_auths {
   function build_form_html($action, $id = '') {
     global $db;
     if ($action <> 'new' && $this->error == false) {
-        $sql = "select description_short, description_long, account_id, vendor_id, tax_rate 
+        $sql = "select description_short, description_long, account_id, supplier_id, tax_rate 
 	       from " . $this->db_table . " where tax_auth_id = " . $id;
         $result = $db->Execute($sql);
         foreach ($result->fields as $key => $value) $this->$key = $value;
@@ -145,8 +145,8 @@ class tax_auths {
 	$output .= '    <td>' . html_pull_down_menu('account_id', gen_coa_pull_down(), $this->account_id) . '</td>' . chr(10);
     $output .= '  </tr>' . chr(10);
 	$output .= '  <tr>' . chr(10);
-	$output .= '    <td>' . SETUP_INFO_VENDOR_ID . '</td>' . chr(10);
-	$output .= '    <td>' . html_pull_down_menu('vendor_id', gen_get_contact_array_by_type('v'), $this->vendor_id) . '</td>' . chr(10);
+	$output .= '    <td>' . SETUP_INFO_SUPPLIER_ID . '</td>' . chr(10);
+	$output .= '    <td>' . html_pull_down_menu('supplier_id', gen_get_contact_array_by_type('v'), $this->supplier_id) . '</td>' . chr(10);
     $output .= '  </tr>' . chr(10);
 	$output .= '  <tr>' . chr(10);
 	$output .= '    <td>' . SETUP_INFO_TAX_RATE . '</td>' . chr(10);

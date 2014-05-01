@@ -134,7 +134,7 @@ echo $toolbar->build_toolbar();
 	  }
 	  $already_paid = fetch_partially_paid($query_result->fields['id']);
 	  $amount_due = $query_result->fields['total_amount'] - $already_paid;
-	  if ($query_result->fields['journal_id'] == 7) $amount_due = -$amount_due; // vendor credit memos
+	  if ($query_result->fields['journal_id'] == 7) $amount_due = -$amount_due; // supplier credit memos
 	  $discount = $currencies->format(($query_result->fields['total_amount'] - $already_paid) * $due_dates['discount']);
 	  if ($post_date > $due_dates['early_date']) $discount = 0; // past the early date
 	  $extra_params = $query_result->fields['waiting'] == '1' ? 'readonly="readonly" ' : '';

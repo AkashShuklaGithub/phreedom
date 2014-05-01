@@ -60,7 +60,7 @@ if (defined('MODULE_PHREEFORM_STATUS')) {
 	);
 	$menu[] = array(
 	  'text'        => TEXT_REPORTS, 
-	  'heading'     => MENU_HEADING_VENDORS, 
+	  'heading'     => MENU_HEADING_SUPPLIERS, 
 	  'rank'        => 99, 
 	  'security_id' => SECURITY_ID_PHREEFORM, 
 	  'link'        => html_href_link(FILENAME_DEFAULT, 'module=phreeform&amp;page=main&amp;tab=vend', 'SSL'),

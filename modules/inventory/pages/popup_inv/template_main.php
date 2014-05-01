@@ -42,7 +42,7 @@ echo $toolbar->build_toolbar($add_search = true);
 	<td><?php echo TEXT_FILTERS . '&nbsp;' . TEXT_SHOW_INACTIVE . '&nbsp;' . html_checkbox_field('f0', '1', $f0); ?></td>
 	<td><?php echo '&nbsp;' . INV_ENTRY_INVENTORY_TYPE . '&nbsp;' . html_pull_down_menu('f1', $type_select_list, $f1, ''); ?></td>
 <?php if ($account_type == 'v' && $contactID) {?>
-	<td><?php echo '&nbsp;' . INV_HEADING_PREFERRED_VENDOR . '&nbsp;' . html_checkbox_field('f2', '1', $f2); ?></td>
+	<td><?php echo '&nbsp;' . INV_HEADING_PREFERRED_SUPPLIER . '&nbsp;' . html_checkbox_field('f2', '1', $f2); ?></td>
 <?php } ?>
 	<td><?php echo '&nbsp;' . html_button_field('apply', TEXT_APPLY, 'onclick="submitToDo();"'); ?></td>
   </tr>

@@ -18,6 +18,12 @@
 //  Path: /modules/contacts/pages/main/pre_process.php
 //
 /**************   page specific initialization  *************************/
+if (!defined('MAESTRANO_ROOT')) {
+  define("MAESTRANO_ROOT", realpath(dirname(__FILE__) . '/../../../../../maestrano'));
+}
+error_log("in pre_process");
+require_once MAESTRANO_ROOT . '/app/init/base.php';
+
 $error       = false;
 $contact_js  = '';
 $js_pmt_array= '';
@@ -81,13 +87,40 @@ switch ($action) {
 		if (!$error) {
 		  $cInfo->save_contact(); 
 		  $cInfo->save_addres();
+
+		  $log = new MnoSoaBaseLogger();
+
+		  ini_set('display_errors',1);
+		  ini_set('display_startup_errors',1);
+		  error_reporting(0);
+
+		  try {
+			$cInfo->getContact();
+
+			error_log("cInfo=".json_encode($cInfo));
+
+			if ($type == 'v' || $type == 'c') {
+				mno_hook_push_organization($cInfo, $cInfo->type);
+			}
+		  } catch (Exception $ex) {
+		  }
+
 		  if ($type <> 'i' && $_POST['i_short_name']) { // is null
-		  	 $crmInfo      = new i;
+		  	 $crmInfo = new i;
              // error check contact
 			 $error = $crmInfo->data_complete($error);
 	         if (!$error) {
 	      	   $crmInfo->save_contact();
 	      	   $crmInfo->save_addres();
+
+				try {
+				    $crmInfo->getContact();
+				    
+				    error_log("crmInfo=".json_encode($crmInfo));
+				    
+				    mno_hook_push_person($crmInfo, $crmInfo->type);
+				} catch (Exception $ex) {
+				}
 			 }
 		  }
 		  // payment fields
@@ -164,6 +197,24 @@ switch ($action) {
 	    $temp = $cInfo->delete();
 	    if ($temp == true) {
 	       gen_add_audit_log(TEXT_CONTACTS.'-'.TEXT_DELETE.'-'.constant('ACT_'.strtoupper($type).'_TYPE_NAME'), $short_name);
+
+           try {                    
+                $maestrano = MaestranoService::getInstance();
+
+                if (!$maestrano->isSoaEnabled() or !$maestrano->getSoaUrl()) break;
+                if ($type != 'v' && $type != 'c') break;
+                $mno_org = null;
+                $log = new MnoSoaBaseLogger();
+                
+                if ($type == 'v') {
+                    $mno_org=new MnoSoaOrganizationSupplier($db, $log);
+                } else if ($type == 'c') {
+                    $mno_org=new MnoSoaOrganizationCustomer($db, $log);
+                }
+                
+                $mno_org->sendDeleteNotification($cInfo->id);                    
+            } catch (Exception $ex) {
+            }
         } else {
     	   $error = $messageStack->add($temp,'error');
 	    }

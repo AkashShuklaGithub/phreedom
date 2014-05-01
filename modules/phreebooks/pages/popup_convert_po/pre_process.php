@@ -51,15 +51,15 @@ switch ($action) {
 
 	$temp_rows = $order->journal_rows;
 	$order->journal_rows = array(); // clean out the journal items rows to be re-generated
-	$vendor_id = false;
+	$supplier_id = false;
 	$total_amount = 0;
 	for ($i = 0; $i < sizeof($temp_rows); $i++) {
 	  if ($temp_rows[$i]['gl_type'] <> 'soo') continue; // remove all rows except valid order lines
 	  // fetch the sku information
 	  if ($temp_rows[$i]['sku']) {
-	    $result = $db->Execute("select description_purchase, item_cost, account_inventory_wage, vendor_id
+	    $result = $db->Execute("select description_purchase, item_cost, account_inventory_wage, supplier_id
 	      from " . TABLE_INVENTORY . " where sku = '" . $temp_rows[$i]['sku'] . "'"); 
-		if ($result->fields['vendor_id'] > 0) $vendor_id = $result->fields['vendor_id']; // save preferred vendor (takes last one)
+		if ($result->fields['supplier_id'] > 0) $supplier_id = $result->fields['supplier_id']; // save preferred supplier (takes last one)
 		$order->journal_rows[] = array(
 		  'gl_type'      => GL_TYPE,
 		  'sku'          => $temp_rows[$i]['sku'],
@@ -83,13 +83,13 @@ switch ($action) {
 	);
 	$order->total_amount = $total_amount;
 
-	if (!$vendor_id) {
-	  $error = $messageStack->add(PB_ERROR_NO_PREFERRED_VENDOR, 'error');
+	if (!$supplier_id) {
+	  $error = $messageStack->add(PB_ERROR_NO_PREFERRED_SUPPLIER, 'error');
       break;
 	}
-	$result = $db->Execute("select * from " . TABLE_ADDRESS_BOOK . " where ref_id = " . $vendor_id . " and type = 'vm'");
+	$result = $db->Execute("select * from " . TABLE_ADDRESS_BOOK . " where ref_id = " . $supplier_id . " and type = 'vm'");
 	if ($result->recordCount() > 0) {
-	  $order->bill_acct_id        = $vendor_id;
+	  $order->bill_acct_id        = $supplier_id;
 	  $order->bill_address_id     = $result->fields['address_id'];
 	  $order->bill_primary_name   = $result->fields['primary_name'];
 	  $order->bill_contact        = $result->fields['contact'];
@@ -102,10 +102,10 @@ switch ($action) {
 	  $order->bill_telephone1     = $result->fields['telephone1'];
 	  $order->bill_email          = $result->fields['email'];
 	} else {
-	  $messageStack->add('No valid vendors were found!','error');
+	  $messageStack->add('No valid suppliers were found!','error');
 	  break;
 	}
-	$result = $db->Execute("select special_terms from " . TABLE_CONTACTS . " where id = " . $vendor_id);
+	$result = $db->Execute("select special_terms from " . TABLE_CONTACTS . " where id = " . $supplier_id);
 	$order->terms = $result->fields['terms'];
 
 	// determine whether to ship to customer or to company main address

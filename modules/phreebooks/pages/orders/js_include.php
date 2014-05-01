@@ -81,7 +81,7 @@ var tax_freight          = '<?php echo ($account_type == "c") ? AR_ADD_SALES_TAX
 var tax_before_discount  = '<?php echo ($account_type == "c") ? AR_TAX_BEFORE_DISCOUNT : AP_TAX_BEFORE_DISCOUNT; ?>';
 var lowStockNoProducts   = '<?php echo LOW_STOCK_NO_PRODUCTS ?> ';
 var lowStockProcessed    = '<?php echo LOW_STOCK_PROCESSED ?> ';
-var lowStockNoVendor     = '<?php echo LOW_STOCK_NO_VENDOR?>';
+var lowStockNoSupplier     = '<?php echo LOW_STOCK_NO_SUPPLIER?>';
 var lowStockExecuted     = '<?php echo LOW_STOCK_ALREADY_EXECUTED?>';
 var lowStockExecute      = true;
 var custCreditLimit      = <?php echo AR_CREDIT_LIMIT_AMOUNT; ?>;

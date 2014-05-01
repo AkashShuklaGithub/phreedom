@@ -53,14 +53,14 @@ if ($iID) {
   $search = ' where ' . implode(' like \'%' . $sku . '%\' or ', $search_fields) . ' like \'%' . $sku . '%\'';
 }
 
-$vendor_search = false;
-$vendor        = in_array($jID, array(3,4,6,7)) ? true : false;
-if ($vendor) { // just search for products from that vendor for purchases
-  $first_search  = $search . " and vendor_id = '" . $cID . "'";
+$supplier_search = false;
+$supplier        = in_array($jID, array(3,4,6,7)) ? true : false;
+if ($supplier) { // just search for products from that supplier for purchases
+  $first_search  = $search . " and supplier_id = '" . $cID . "'";
   $inventory     = $db->Execute("select * from " . TABLE_INVENTORY . $first_search);
-  $vendor_search = $inventory->recordCount() ? true : false;
+  $supplier_search = $inventory->recordCount() ? true : false;
 }
-if (!$vendor || !$vendor_search) {
+if (!$supplier || !$supplier_search) {
   $inventory = $db->Execute("select * from " . TABLE_INVENTORY . $search);
 }
 if ($UPC && $inventory->RecordCount() <> 1) { // for UPC codes submitted only, send an error
@@ -117,7 +117,7 @@ if ($result->RecordCount() == 0) {
   }
 }
 // load prices, tax
-$prices = inv_calculate_sales_price(abs($qty), $iID, $cID, $vendor ? 'v' : 'c');
+$prices = inv_calculate_sales_price(abs($qty), $iID, $cID, $supplier ? 'v' : 'c');
 $sales_price = strval($prices['price']);
 $inventory->fields['item_taxable']  = strval($prices['sales_tax']);
 $inventory->fields['purch_taxable'] = strval($prices['purch_tax']);

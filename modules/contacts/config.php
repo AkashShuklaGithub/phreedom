@@ -30,7 +30,7 @@
 define('MODULE_CONTACTS_VERSION',     '3.7');
 // Menu Sort Positions
 define('MENU_HEADING_CUSTOMERS_ORDER',   10);
-define('MENU_HEADING_VENDORS_ORDER',     20);
+define('MENU_HEADING_SUPPLIERS_ORDER',     20);
 define('MENU_HEADING_EMPLOYEES_ORDER',   60);
 // Menu Security id's (refer to master doc to avoid security setting overlap)
 define('SECURITY_ID_MAINTAIN_BRANCH',    15);
@@ -40,7 +40,7 @@ define('SECURITY_ID_MAINTAIN_PROJECTS',  16);
 define('SECURITY_ID_PROJECT_PHASES',     36);
 define('SECURITY_ID_PROJECT_COSTS',      37);
 define('SECURITY_ID_PHREECRM',           49);
-define('SECURITY_ID_MAINTAIN_VENDORS',   51);
+define('SECURITY_ID_MAINTAIN_SUPPLIERS',   51);
 // New Database Tables
 define('TABLE_ADDRESS_BOOK',    DB_PREFIX . 'address_book');
 define('TABLE_CONTACTS',        DB_PREFIX . 'contacts');
@@ -54,8 +54,8 @@ $pb_headings[MENU_HEADING_CUSTOMERS_ORDER] = array(
   'text' => MENU_HEADING_CUSTOMERS, 
   'link' => html_href_link(FILENAME_DEFAULT, 'module=phreedom&amp;page=main&amp;mID=cat_ar', 'SSL'),
 );
-$pb_headings[MENU_HEADING_VENDORS_ORDER] = array(
-  'text' => MENU_HEADING_VENDORS, 
+$pb_headings[MENU_HEADING_SUPPLIERS_ORDER] = array(
+  'text' => MENU_HEADING_SUPPLIERS, 
   'link' => html_href_link(FILENAME_DEFAULT, 'module=phreedom&amp;page=main&amp;mID=cat_ap', 'SSL'),
 );
 $pb_headings[MENU_HEADING_EMPLOYEES_ORDER] = array(
@@ -87,19 +87,19 @@ $menu[] = array(
   'link'        => html_href_link(FILENAME_DEFAULT, 'module=contacts&amp;page=main&amp;type=i&amp;list=1', 'SSL'),
 );
 $menu[] = array(
-  'text'        => BOX_CONTACTS_NEW_VENDOR, 
-  'heading'     => MENU_HEADING_VENDORS, 
+  'text'        => BOX_CONTACTS_NEW_SUPPLIER, 
+  'heading'     => MENU_HEADING_SUPPLIERS, 
   'rank'        => 5, 
   'hide'        => true,
-  'security_id' => SECURITY_ID_MAINTAIN_VENDORS, 
-  'hidden'      => $_SESSION['admin_security'][SECURITY_ID_MAINTAIN_VENDORS] > 1 ? false : true,
+  'security_id' => SECURITY_ID_MAINTAIN_SUPPLIERS, 
+  'hidden'      => $_SESSION['admin_security'][SECURITY_ID_MAINTAIN_SUPPLIERS] > 1 ? false : true,
   'link'        => html_href_link(FILENAME_DEFAULT, 'module=contacts&amp;page=main&amp;action=new&amp;type=v', 'SSL'),
 );
 $menu[] = array(
-  'text'        => BOX_CONTACTS_MAINTAIN_VENDORS, 
-  'heading'     => MENU_HEADING_VENDORS, 
+  'text'        => BOX_CONTACTS_MAINTAIN_SUPPLIERS, 
+  'heading'     => MENU_HEADING_SUPPLIERS, 
   'rank'        => 10, 
-  'security_id' => SECURITY_ID_MAINTAIN_VENDORS, 
+  'security_id' => SECURITY_ID_MAINTAIN_SUPPLIERS, 
   'link'        => html_href_link(FILENAME_DEFAULT, 'module=contacts&amp;page=main&amp;type=v&amp;list=1', 'SSL'),
 );
 $menu[] = array(

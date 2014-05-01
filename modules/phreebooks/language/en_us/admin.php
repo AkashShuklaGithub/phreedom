@@ -26,7 +26,7 @@ define('MODULE_PHREEBOOKS_DESCRIPTION','The phreebooks module provides double en
 define('MODULE_PHREEBOOKS_NOTES_1','PRIORITY MEDIUM: Enter company information (Company -> Module Administration -> My Company tab)');
 define('MODULE_PHREEBOOKS_NOTES_2','PRIORITY LOW: Set up mail server settings (Company -> Module Administration -> Email tab)');
 define('MODULE_PHREEBOOKS_NOTES_3','PRIORITY HIGH: Change or import chart of accounts from default settings (Company -> Module Administration -> PhreeBooks Module Properties -> Chart of Accounts tab)');
-define('MODULE_PHREEBOOKS_NOTES_4','PRIORITY MEDIUM: Update default general ledger accounts for customer and vendors, after loading GL accounts (Company -> Module Administration -> PhreeBooks Module Properties -> Customers/Vendors tab)');
+define('MODULE_PHREEBOOKS_NOTES_4','PRIORITY MEDIUM: Update default general ledger accounts for customer and suppliers, after loading GL accounts (Company -> Module Administration -> PhreeBooks Module Properties -> Customers/Suppliers tab)');
 // General Defines
 define('TEXT_DEFAULT_GL_ACCOUNTS','Default GL Accounts');
 define('TEXT_PAYMENT_TERMS','Payment Terms');
@@ -70,13 +70,13 @@ define('PB_PF_INV_PKG_SLIP','Invoices/Packing Slips');
 define('PB_PF_PURCH_ORDER','Purchase Orders');
 define('PB_PF_SALES_ORDER','Sales Orders');
 define('PB_PF_SALES_REC','Sales Receipts');
-define('PB_PF_VENDOR_CRD_MEMO','Credit Memos - Vendor');
-define('PB_PF_VENDOR_LABEL','Labels - Vendor');
-define('PB_PF_VENDOR_QUOTE','Vendor Quotes');
-define('PB_PF_VENDOR_STATEMENT','Vendor Statements');
+define('PB_PF_SUPPLIER_CRD_MEMO','Credit Memos - Supplier');
+define('PB_PF_SUPPLIER_LABEL','Labels - Supplier');
+define('PB_PF_SUPPLIER_QUOTE','Supplier Quotes');
+define('PB_PF_SUPPLIER_STATEMENT','Supplier Statements');
 /************************** (PhreeBooks Utilities) ***********************************************/
 define('GEN_ADM_TOOLS_AR','Customer/Receivables');
-define('GEN_ADM_TOOLS_AP','Vendors/Payables');
+define('GEN_ADM_TOOLS_AP','Suppliers/Payables');
 define('GEN_ADM_TOOLS_RE_POST_FAILED','No journals were selected to re-post, no action was taken.');
 define('GEN_ADM_TOOLS_RE_POST_SUCCESS','The selected journals were re-posted successfully. The number of records re-posted was: %s');
 define('GEN_ADM_TOOLS_AUDIT_LOG_RE_POST','Re-post Journals: ');
@@ -132,14 +132,14 @@ define('GEN_ADM_TOOLS_AUDIT_LOG_SEQ','Current Order Status - Update');
 define('GEN_ADM_TOOLS_TITLE','Administrative Tools and Utilities');
 
 define('NEXT_AR_QUOTE_NUM_DESC','Next Customer Quote Number');
-define('NEXT_AP_QUOTE_NUM_DESC','Next Vendor Quote Number');
+define('NEXT_AP_QUOTE_NUM_DESC','Next Supplier Quote Number');
 define('NEXT_DEPOSIT_NUM_DESC','Next Deposit Number');
 define('NEXT_SO_NUM_DESC','Next Sales Order Number');
 define('NEXT_PO_NUM_DESC','Next Purchase Order Number');
 define('NEXT_CHECK_NUM_DESC','Next Check Number');
 define('NEXT_INV_NUM_DESC','Next Sales/Invoice Number');
 define('NEXT_CM_NUM_DESC','Next Credit Memo Number');
-define('NEXT_VCM_NUM_DESC','Next Vendor Credit Memo Number');
+define('NEXT_VCM_NUM_DESC','Next Supplier Credit Memo Number');
 /************************** (General Defaults) ***********************************************/
 define('CD_13_01_DESC', 'Automatically changes the current accounting period based on the server date and current fiscal calendar. If not enabled, the current accounting period must be manually changed in the General Ledger => Utilities menu.');
 define('CD_13_05_DESC', 'Determines how to display the general ledger accounts in pull-down menus.<br />Number - GL Account Number Only.<br />Description - GL Account Description Only.<br />Both - Both gl number and name will be displayed.');
@@ -176,23 +176,23 @@ define('CD_02_23_DESC', 'Text heading used on reports to show aging for due date
 
 define('CD_02_24_DESC', 'Determines whether or not to calculate finance charges on past due invoices.');
 define('CD_02_30_DESC', 'If enabled, shipping charges will be added to the calculation of sales tax. If not enabled, shipping will not be taxed.');
-define('CD_02_35_DESC', 'If set to Yes, this option will automatically assign an ID to new customer/vendor when they are created.');
+define('CD_02_35_DESC', 'If set to Yes, this option will automatically assign an ID to new customer/supplier when they are created.');
 define('CD_02_40_DESC', 'This feature displays a customer status popup on the order screens when a customer is selected from the contact search popup. It displays balances, account aging as well as the active status of the account.');
 define('CD_02_50_DESC', 'If order level discounts are enabled, this switch determines whether the sales tax is calculated before or after the discount is applied to Sales Orders, Sales/Invoices, and Customer Quotes.');
-/************************** (Vendor Defaults) ***********************************************/
+/************************** (Supplier Defaults) ***********************************************/
 define('CD_03_01_DESC', 'Default account to use for received items. This account can be over written through the individual item record. Typically an Inventory or Expense type account.');
-define('CD_03_02_DESC', 'Default account to use for all purchases unless specified in the individual vendor record. Typically a Accounts Payable type account.');
-define('CD_03_03_DESC', 'Default account to use for payments to when vendor invoices are paid. Typically a Cash type account.');
-define('CD_03_04_DESC', 'Default account to use for freight charges for shipments from vendors. Typically an Expense type account.');
+define('CD_03_02_DESC', 'Default account to use for all purchases unless specified in the individual supplier record. Typically a Accounts Payable type account.');
+define('CD_03_03_DESC', 'Default account to use for payments to when supplier invoices are paid. Typically a Cash type account.');
+define('CD_03_04_DESC', 'Default account to use for freight charges for shipments from suppliers. Typically an Expense type account.');
 define('CD_03_05_DESC', 'Default account to use for purchase discounts paid with early discount payment terms.  Typically an Accounts Payable type account.');
-define('CD_03_06_DESC', 'Default account to use for cash paid to vendors for deposits. Typically a Cash type account.');
-define('CD_03_07_DESC', 'Default account to use for vendor deposits. Typically an Other Current Liabilities type account.');
+define('CD_03_06_DESC', 'Default account to use for cash paid to suppliers for deposits. Typically a Cash type account.');
+define('CD_03_07_DESC', 'Default account to use for supplier deposits. Typically an Other Current Liabilities type account.');
 define('CD_03_11_DESC', 'Default terms for payment');
-define('CD_03_12_DESC', 'Default amount to use for vendor credit limit. (%s)');
+define('CD_03_12_DESC', 'Default amount to use for supplier credit limit. (%s)');
 define('CD_03_30_DESC', 'If enabled, shipping charges will be added to the calculation of sales tax. If not enabled, shipping will not be taxed.');
-define('CD_03_35_DESC', 'If set to true, this option will automatically assign an ID to new vendors when they are created.');
-define('CD_03_40_DESC', 'This feature displays a vendor status popup on the order screens when a vendor is selected from the contact search popup. It displays balances, account aging as well as the active status of the account.');
-define('CD_03_50_DESC', 'If order level discounts are enabled, this switch determines whether the sales tax is calculated before or after the discount is applied to Purchase Orders, Purchases, and Vendor Quotes.');
+define('CD_03_35_DESC', 'If set to true, this option will automatically assign an ID to new suppliers when they are created.');
+define('CD_03_40_DESC', 'This feature displays a supplier status popup on the order screens when a supplier is selected from the contact search popup. It displays balances, account aging as well as the active status of the account.');
+define('CD_03_50_DESC', 'If order level discounts are enabled, this switch determines whether the sales tax is calculated before or after the discount is applied to Purchase Orders, Purchases, and Supplier Quotes.');
 /************************** (Chart of Accounts) ***********************************************/
 define('GL_SELECT_STD_CHART','Select a standard chart: ');
 define('GL_CHART_REPLACE','Replace current chart of accounts');
@@ -227,7 +227,7 @@ define('SETUP_TAX_AUTH_EDIT_INTRO', 'Please make any necessary changes');
 define('SETUP_INFO_DESC_SHORT', 'Short Name (15 chars max)');
 define('SETUP_INFO_DESC_LONG', 'Long Description (64 chars max)');
 define('SETUP_INFO_GL_ACCOUNT', 'GL Account to record tax:');
-define('SETUP_INFO_VENDOR_ID', 'Vendor to submit funds to:');
+define('SETUP_INFO_SUPPLIER_ID', 'Supplier to submit funds to:');
 define('SETUP_INFO_TAX_RATE', 'Tax rate (in percent)');
 define('SETUP_TAX_AUTH_INSERT_INTRO', 'Please enter the new tax authority with its properties');
 define('SETUP_TAX_AUTH_DELETE_INTRO', 'Are you sure you want to delete this tax authority?');
