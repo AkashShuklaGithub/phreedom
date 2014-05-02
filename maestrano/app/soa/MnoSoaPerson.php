@@ -117,6 +117,7 @@ class MnoSoaPerson extends MnoSoaBasePerson
             $this->_local_entity->address_book['m'][0]->address2 = $pieces[1];
         } else {
             $this->_local_entity->address_book['m'][0]->address1 = $street_address;
+            $this->_local_entity->address_book['m'][0]->address2 = "";
         }
         
         $this->_local_entity->address_book['m'][0]->city_town = $this->pull_set_or_delete_value($this->_address->work->postalAddress->locality);
@@ -316,7 +317,7 @@ class MnoSoaPerson extends MnoSoaBasePerson
             if (isset($this->_local_entity->i_id)) {
                 unset($this->_local_entity->i_id);
             }
-            $this->_local_entity->short_name = $short_name . $map->org_id;
+            //$this->_local_entity->short_name = $short_name . $map->org_id;
             $this->_local_entity->save_contact();
             $this->_local_entity->i_id = $this->_local_entity->id;
             $this->_local_entity->save_addres(true);

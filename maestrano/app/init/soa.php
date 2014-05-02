@@ -13,6 +13,11 @@ require_once MAESTRANO_ROOT . '/app/init/base.php';
 define('APP_DIR', realpath(MAESTRANO_ROOT . '/../'));
 chdir(APP_DIR);
 
+// Set company in session to force phreedom
+// to configure the database object
+session_start();
+$_SESSION['company'] = 'phreedom';
+
 require_once APP_DIR . '/includes/configure.php';
 require_once APP_DIR . '/includes/application_top.php';
 require_once APP_DIR . '/modules/contacts/classes/contacts.php';
