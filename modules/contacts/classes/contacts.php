@@ -46,11 +46,22 @@ class contacts {
     	global $db;
     	//set defaults
         $this->crm_date        = date('Y-m-d');
-        $this->crm_rep_id      = $_SESSION['account_id'] <> 0 ? $_SESSION['account_id'] : $_SESSION['admin_id'];
-        foreach ($_POST as $key => $value) $this->$key = $value;
-        $this->special_terms  =  db_prepare_input($_POST['terms']); // TBD will fix when popup terms is redesigned
-        if ($this->id  == '') $this->id  = db_prepare_input($_POST['rowSeq'], true) ? db_prepare_input($_POST['rowSeq']) : db_prepare_input($_GET['cID']);
-        if ($this->aid == '') $this->aid = db_prepare_input($_GET['aID'],     true) ? db_prepare_input($_GET['aID'])     : db_prepare_input($_POST['aID']); 
+        if (isset($_SESSION) && array_key_exists('account_id',$_SESSION) || array_key_exists('admin_id',$_SESSION)) {
+            $this->crm_rep_id      = $_SESSION['account_id'] <> 0 ? $_SESSION['account_id'] : $_SESSION['admin_id'];
+            error_log("account_id=".$_SESSION['account_id']." admin_id=".$_SESSION['admin_id']);
+        }
+        if (isset($_POST)) {
+            foreach ($_POST as $key => $value) $this->$key = $value;
+        }
+        if (isset($_POST) && array_key_exists('terms', $_POST)) {
+            $this->special_terms  =  db_prepare_input($_POST['terms']); // TBD will fix when popup terms is redesigned
+        }
+        if (isset($_POST['rowSeq']) || isset($_GET['cID'])) {
+            if ($this->id  == '') $this->id  = db_prepare_input($_POST['rowSeq'], true) ? db_prepare_input($_POST['rowSeq']) : db_prepare_input($_GET['cID']);
+        }
+        if (isset($_GET['aID']) || isset($_POST['aID'])) {
+            if ($this->aid == '') $this->aid = db_prepare_input($_GET['aID'],     true) ? db_prepare_input($_GET['aID'])     : db_prepare_input($_POST['aID']); 
+        }
     }
 		
 	public function getContact() {

@@ -167,6 +167,7 @@ class MnoSoaOrganization extends MnoSoaBaseOrganization
             $this->_local_entity->address_book['m'][0]->address2 = $pieces[1];
         } else {
             $this->_local_entity->address_book['m'][0]->address1 = $street_address;
+            $this->_local_entity->address_book['m'][0]->address2 = "";
         }
         
         if (empty($this->_local_entity->address_book['m'][0]->primary_name)) {
@@ -189,6 +190,7 @@ class MnoSoaOrganization extends MnoSoaBaseOrganization
             $this->_local_entity->address_book['s'][0]->address2 = $pieces[1];
         } else {
             $this->_local_entity->address_book['s'][0]->address1 = $street_address;
+            $this->_local_entity->address_book['s'][0]->address2 = "";
         }
         
         if (empty($this->_local_entity->address_book['s'][0]->primary_name)) {
@@ -211,6 +213,7 @@ class MnoSoaOrganization extends MnoSoaBaseOrganization
             $this->_local_entity->address_book['b'][0]->address2 = $pieces[1];
         } else {
             $this->_local_entity->address_book['b'][0]->address1 = $street_address;
+            $this->_local_entity->address_book['b'][0]->address2 = "";
         }
         
         if (empty($this->_local_entity->address_book['b'][0]->primary_name)) {
