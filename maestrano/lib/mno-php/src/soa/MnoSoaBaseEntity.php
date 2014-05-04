@@ -297,7 +297,7 @@ class MnoSoaBaseEntity
     
     protected function pull_set_or_delete_value(&$source, $empty_value="")
     {
-        if ($source == null) { $this->_log->debug('source==null'); return null; }
+        if ($source == null) { $this->_log->debug('source==null'); return $empty_value; }
         else if (!empty($source)) { $this->_log->debug('!empty(source)'); return $source; }
         else { $this->_log->debug('empty(source)'); return $empty_value; }
     }
