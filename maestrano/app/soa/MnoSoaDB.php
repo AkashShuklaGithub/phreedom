@@ -18,7 +18,10 @@ class MnoSoaDB extends MnoSoaBaseDB {
     */
     
     public function addIdMapEntry($local_id, $local_entity_name, $mno_id, $mno_entity_name) 
-    {	
+    {   
+        $this->_db = new queryFactory();
+        $this->_db->connect(DB_SERVER_HOST, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE);
+        
         $this->_log->debug(__CLASS__ . ' ' . __FUNCTION__ . " start");
 	// Fetch record
 	$row = $this->_db->Execute("INSERT INTO mno_id_map (mno_entity_guid, mno_entity_name, app_entity_id, app_entity_name, db_timestamp) VALUES "
@@ -36,6 +39,9 @@ class MnoSoaDB extends MnoSoaBaseDB {
     */
     public function getMnoIdByLocalIdName($local_id, $local_entity_name)
     {
+        $this->_db = new queryFactory();
+        $this->_db->connect(DB_SERVER_HOST, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE);
+        
         $this->_log->debug(__CLASS__ . ' ' . __FUNCTION__ . " start");
         $mno_entity = null;
         
@@ -66,7 +72,10 @@ class MnoSoaDB extends MnoSoaBaseDB {
     }
     
     public function getLocalIdByMnoIdName($mno_id, $mno_entity_name, $local_entity_name=null)
-    {
+    {        
+        $this->_db = new queryFactory();
+        $this->_db->connect(DB_SERVER_HOST, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE);
+        
         $this->_log->debug(__CLASS__ . ' ' . __FUNCTION__ . " start");
 	$local_entity = null;
         $query = "SELECT app_entity_id, app_entity_name, deleted_flag ".
@@ -104,6 +113,9 @@ class MnoSoaDB extends MnoSoaBaseDB {
     
     public function getLocalIdsByMnoIdName($mno_id, $mno_entity_name)
     {
+        $this->_db = new queryFactory();
+        $this->_db->connect(DB_SERVER_HOST, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE);
+        
         $this->_log->debug(__CLASS__ . ' ' . __FUNCTION__ . " start");
 	$local_entities = array();
         
@@ -139,6 +151,9 @@ class MnoSoaDB extends MnoSoaBaseDB {
     
     public function deleteIdMapEntry($local_id, $local_entity_name) 
     {
+        $this->_db = new queryFactory();
+        $this->_db->connect(DB_SERVER_HOST, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE);
+        
         $this->_log->debug(__CLASS__ . ' ' . __FUNCTION__ . " start");
         // Logically delete record
         $query = "UPDATE mno_id_map SET deleted_flag=1 WHERE app_entity_id='".$local_id."' and app_entity_name='".strtoupper($local_entity_name)."'";

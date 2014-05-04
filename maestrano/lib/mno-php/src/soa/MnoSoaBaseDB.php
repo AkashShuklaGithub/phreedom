@@ -9,7 +9,6 @@ class MnoSoaBaseDB {
     
     public function __construct($db, $log)
     {
-	$this->_db = $db;
         $this->_log = $log;
     }
     
