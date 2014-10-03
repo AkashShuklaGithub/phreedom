@@ -74,6 +74,10 @@ if (file_exists($js_include_path)) { require_once($js_include_path); }
 if (SESSION_AUTO_REFRESH == '1') echo '  <script type="text/javascript">addLoadEvent(refreshSessionClock);</script>' . chr(10);
 ?>
   <script type="text/javascript">addLoadEvent(init);</script>
+  <script src='//cdn.maestrano.com/apps/mno_libs/mno-loader.js' type='text/javascript'></script>
+  <script type='text/javascript'>
+    window.mnoLoader.init('phreedom','1');
+  </script>
  </head>
  <body>
   <script type="text/javascript" src="modules/phreedom/includes/wz_tooltip/wz_tooltip.js"></script>
